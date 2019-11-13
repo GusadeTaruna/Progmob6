@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView tvRegister;
     ProgressDialog loading;
+    UserSessionManager session;
 
 
     Context mContext;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        session = new UserSessionManager(getApplicationContext());
         mContext = this;
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
         initComponents();
@@ -71,6 +73,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     private void requestLogin(){
         mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString())
                 .enqueue(new Callback<ResponseBody>() {
@@ -85,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // akan diparsing ke activity selanjutnya.
 //                                    Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
                                     String nama = jsonRESULTS.getJSONObject("user").getString("name");
+                                    session.createUserLoginSession(nama);
 //                                    int id = jsonRESULTS.getJSONObject("user").getInt("id");
 //                                    Log.d("debug","id : "+id);
 //                                    Intent intent = new Intent(mContext, MainActivity.class);

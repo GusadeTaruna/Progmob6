@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         //Menampilkan halaman Fragment yang pertama kali muncul
         getFragmentPage(new Home());
         Bundle bundle = new Bundle();
-        bundle.putString("params", "My String data");
         Home myObj = new Home();
         myObj.setArguments(bundle);
 

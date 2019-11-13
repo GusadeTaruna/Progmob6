@@ -109,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         } else {
                             Log.i("debug", "onResponse: GA BERHASIL");
+                            Toast.makeText(mContext, "Register Gagal", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }

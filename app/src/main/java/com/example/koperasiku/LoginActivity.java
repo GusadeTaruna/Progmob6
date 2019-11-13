@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (jsonRESULTS.getString("error").equals("false")){
                                     // Jika login berhasil maka data nama yang ada di response API
                                     // akan diparsing ke activity selanjutnya.
-//                                    Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
                                     String nama = jsonRESULTS.getJSONObject("user").getString("name");
                                     session.createUserLoginSession(nama);
 //                                    int id = jsonRESULTS.getJSONObject("user").getInt("id");
@@ -114,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
+                            Log.i("debug", "onResponse: Gagal login");
+                            Toast.makeText(mContext, "Login Gagal", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
                         }
                     }

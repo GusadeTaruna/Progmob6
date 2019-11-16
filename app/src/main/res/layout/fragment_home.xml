@@ -51,7 +51,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/montserrat_bold"
+                            android:fontFamily="@font/nunito_sans_bold"
                             android:text="Kelola Karyawan"
                             android:textColor="#00D1A5"
                             android:textStyle="bold" />
@@ -59,7 +59,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_regular"
+                            android:fontFamily="@font/nunito_sans_reguler"
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="Halaman untuk mengelola Karyawan"
@@ -90,7 +90,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/montserrat_bold"
+                            android:fontFamily="@font/nunito_sans_bold"
                             android:text="Kelola Nasabah"
                             android:textColor="#00D1A5"
                             android:textStyle="bold" />
@@ -98,7 +98,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_regular"
+                            android:fontFamily="@font/nunito_sans_reguler"
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="Halaman untuk mengelola Nasabah"
@@ -146,7 +146,7 @@
                             android:text="Transaksi Setoran"
                             android:textColor="#00D1A5"
                             android:textStyle="bold"
-                            android:fontFamily="@font/montserrat_bold"/>
+                            android:fontFamily="@font/nunito_sans_bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
                             android:padding="5dp"
                             android:text="Halaman untuk melakukan transaksi setoran"
                             android:textSize="10dp"
-                            android:fontFamily="@font/montserrat_regular"/>
+                            android:fontFamily="@font/nunito_sans_reguler"/>
 
 
                     </LinearLayout>
@@ -185,7 +185,7 @@
                             android:text="Transaksi Penarikan"
                             android:textColor="#00D1A5"
                             android:textStyle="bold"
-                            android:fontFamily="@font/montserrat_bold"/>
+                            android:fontFamily="@font/nunito_sans_bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -194,7 +194,7 @@
                             android:padding="5dp"
                             android:text="Halaman untuk melakukan transaksi penarikan"
                             android:textSize="10dp"
-                            android:fontFamily="@font/montserrat_regular"/>
+                            android:fontFamily="@font/nunito_sans_reguler"/>
 
 
                     </LinearLayout>
@@ -237,7 +237,7 @@
                             android:text="Report transaksi"
                             android:textColor="#00D1A5"
                             android:textStyle="bold"
-                            android:fontFamily="@font/montserrat_bold"/>
+                            android:fontFamily="@font/nunito_sans_bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -246,7 +246,7 @@
                             android:padding="5dp"
                             android:text="Halaman untuk melihat laporan transaksi"
                             android:textSize="10dp"
-                            android:fontFamily="@font/montserrat_regular"/>
+                            android:fontFamily="@font/nunito_sans_reguler"/>
 
 
                     </LinearLayout>
@@ -276,7 +276,7 @@
                             android:text="Hitung Bunga"
                             android:textColor="#00D1A5"
                             android:textStyle="bold"
-                            android:fontFamily="@font/montserrat_bold"/>
+                            android:fontFamily="@font/nunito_sans_bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -285,7 +285,7 @@
                             android:padding="5dp"
                             android:text="Halaman untuk menghitung bunga perbulan"
                             android:textSize="10dp"
-                            android:fontFamily="@font/montserrat_regular"/>
+                            android:fontFamily="@font/nunito_sans_reguler"/>
 
 
                     </LinearLayout>
@@ -308,7 +308,7 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/nunito_sans_bold"
                     android:text="Dashboard"
                     android:textColor="#00D1A5"
                     android:textAlignment="center"

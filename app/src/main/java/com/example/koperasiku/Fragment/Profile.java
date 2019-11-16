@@ -45,7 +45,7 @@ public class Profile extends Fragment {
         }
         HashMap<String, String> user = session.getUserDetails();
         String name = user.get(UserSessionManager.KEY_NAME);
-        lblnama.setText(Html.fromHtml("Selamat Datang " +  name));
+        lblnama.setText(Html.fromHtml(name));
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

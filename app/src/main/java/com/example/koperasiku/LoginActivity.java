@@ -1,7 +1,9 @@
 package com.example.koperasiku;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -54,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = (EditText) findViewById(R.id.login_email);
         etPassword = (EditText) findViewById(R.id.login_password);
         btnLogin = (Button) findViewById(R.id.login_button);
-        tvRegister = (TextView) findViewById(R.id.signup_button);
+//        tvRegister = (TextView) findViewById(R.id.signup_button);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,13 +66,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, RegisterActivity.class));
-                finish();
-            }
-        });
+//        tvRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(mContext, RegisterActivity.class));
+//                finish();
+//            }
+//        });
     }
 
     @Override
@@ -94,15 +96,25 @@ public class LoginActivity extends AppCompatActivity {
                                     // Jika login berhasil maka data nama yang ada di response API
                                     // akan diparsing ke activity selanjutnya.
                                     Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
-                                    String nama = jsonRESULTS.getJSONObject("user").getString("name");
+                                    final String nama = jsonRESULTS.getJSONObject("user").getString("name");
                                     session.createUserLoginSession(nama);
 //                                    int id = jsonRESULTS.getJSONObject("user").getInt("id");
 //                                    Log.d("debug","id : "+id);
 //                                    Intent intent = new Intent(mContext, MainActivity.class);
-                                    Intent intent = new Intent(mContext, MainActivity.class);
-                                    intent.putExtra("result_nama", nama);
-                                    startActivity(intent);
-                                    finish();
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+                                    alertDialogBuilder.setTitle("Login Sukses!");
+                                    alertDialogBuilder.setMessage("Nama : "+nama+ "\nRole : Admin");
+                                    alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            Intent intent = new Intent(mContext, MainActivity.class);
+                                            intent.putExtra("result_nama", nama);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
+                                    AlertDialog alertDialog = alertDialogBuilder.create();
+                                    alertDialog.show();
                                 } else {
                                     // Jika login gagal
                                     String error_message = jsonRESULTS.getString("error_msg");

@@ -1,5 +1,6 @@
 package com.example.koperasiku.Fragment;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,6 @@ import java.util.HashMap;
 public class Profile extends Fragment {
 
     UserSessionManager session;
-    String mParam1;
     FrameLayout rootView;
     Button btnLogout;
 
@@ -36,8 +36,8 @@ public class Profile extends Fragment {
         TextView lblnama = (TextView) rootView.findViewById(R.id.home_nama);
         btnLogout = (Button) rootView.findViewById(R.id.btnLogout);
 
-        Toast.makeText(getActivity().getApplicationContext(),"User Login Status : " + session.isUserLoggedIn(),
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(getActivity().getApplicationContext(),"User Login Status : " + session.isUserLoggedIn(),
+//                Toast.LENGTH_LONG).show();
 
 
         if(session.checkLogin()){
@@ -51,6 +51,7 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View v) {
                 session.logoutUser();
+                Toast.makeText(getActivity(), "Logout Berhasil", Toast.LENGTH_SHORT).show();
             }
         });
 

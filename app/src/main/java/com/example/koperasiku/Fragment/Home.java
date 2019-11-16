@@ -21,10 +21,9 @@ import com.example.koperasiku.UserSessionManager;
 import java.util.HashMap;
 
 public class Home extends Fragment {
+
     UserSessionManager session;
-    String mParam1;
     FrameLayout rootView;
-    Button btnLogout;
 
     @Nullable
     @Override
@@ -34,26 +33,9 @@ public class Home extends Fragment {
 
         session = new UserSessionManager(getActivity().getApplicationContext());
 
-        TextView lblnama = (TextView) rootView.findViewById(R.id.home_nama);
-        btnLogout = (Button) rootView.findViewById(R.id.btnLogout);
-
-        Toast.makeText(getActivity().getApplicationContext(),"User Login Status : " + session.isUserLoggedIn(),
-                        Toast.LENGTH_LONG).show();
-
-
         if(session.checkLogin()){
             getActivity().finish();
         }
-        HashMap<String, String> user = session.getUserDetails();
-        String name = user.get(UserSessionManager.KEY_NAME);
-        lblnama.setText(Html.fromHtml("Selamat Datang " +  name));
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                session.logoutUser();
-            }
-        });
 
         return rootView;
     }

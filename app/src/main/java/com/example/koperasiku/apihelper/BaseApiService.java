@@ -5,6 +5,8 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface BaseApiService {
 
@@ -21,6 +23,15 @@ public interface BaseApiService {
                                        @Field("email") String email,
                                        @Field("password") String password,
                                        @Field("confirm_password") String confirm_password);
+
+    @FormUrlEncoded
+    @POST("edit/{id}")
+    Call<ResponseBody> editProfil(@Path("id") String id,
+                                  @Field("name") String name,
+                                  @Field("email") String email);
+
+
+
 
     @FormUrlEncoded
     @POST("detail")

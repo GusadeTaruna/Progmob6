@@ -97,7 +97,9 @@ public class LoginActivity extends AppCompatActivity {
                                     // akan diparsing ke activity selanjutnya.
                                     Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
                                     final String nama = jsonRESULTS.getJSONObject("user").getString("name");
-                                    session.createUserLoginSession(nama);
+                                    final String email = jsonRESULTS.getJSONObject("user").getString("email");
+                                    final String id = jsonRESULTS.getJSONObject("user").getString("id");
+                                    session.createUserLoginSession(id,nama,email);
 //                                    int id = jsonRESULTS.getJSONObject("user").getInt("id");
 //                                    Log.d("debug","id : "+id);
 //                                    Intent intent = new Intent(mContext, MainActivity.class);

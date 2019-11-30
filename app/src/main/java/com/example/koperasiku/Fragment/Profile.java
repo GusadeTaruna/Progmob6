@@ -1,6 +1,7 @@
 package com.example.koperasiku.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,8 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.koperasiku.EditProfileActivity;
+import com.example.koperasiku.MainActivity;
 import com.example.koperasiku.R;
 import com.example.koperasiku.UserSessionManager;
 
@@ -24,6 +27,7 @@ public class Profile extends Fragment {
     UserSessionManager session;
     FrameLayout rootView;
     Button btnLogout;
+    Button btnEdit;
 
     @Nullable
     @Override
@@ -35,6 +39,7 @@ public class Profile extends Fragment {
 
         TextView lblnama = (TextView) rootView.findViewById(R.id.home_nama);
         btnLogout = (Button) rootView.findViewById(R.id.btnLogout);
+        btnEdit = (Button) rootView.findViewById(R.id.btnEdit);
 
 //        Toast.makeText(getActivity().getApplicationContext(),"User Login Status : " + session.isUserLoggedIn(),
 //                Toast.LENGTH_LONG).show();
@@ -44,14 +49,24 @@ public class Profile extends Fragment {
             getActivity().finish();
         }
         HashMap<String, String> user = session.getUserDetails();
-        String name = user.get(UserSessionManager.KEY_NAME);
-        lblnama.setText(Html.fromHtml(name));
+        final String id = user.get(UserSessionManager.ID);
+        final String nama = user.get(UserSessionManager.KEY_NAME);
+        final String email = user.get(UserSessionManager.KEY_EMAIL);
+        lblnama.setText(Html.fromHtml(nama));
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 session.logoutUser();
                 Toast.makeText(getActivity(), "Logout Berhasil", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(intent);
             }
         });
 

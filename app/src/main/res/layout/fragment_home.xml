@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
@@ -31,8 +30,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/menu_karyawan"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
+                    app:cardCornerRadius="25dp"
                     android:layout_margin="10dp">
 
                     <LinearLayout
@@ -70,8 +71,10 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/menu_nasabah"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
+                    app:cardCornerRadius="25dp"
                     android:layout_margin="10dp">
 
                     <LinearLayout
@@ -123,8 +126,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/menu_setor"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
+                    app:cardCornerRadius="25dp"
                     android:layout_margin="10dp">
 
                     <LinearLayout
@@ -162,8 +167,10 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/menu_tarik"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
+                    app:cardCornerRadius="25dp"
                     android:layout_margin="10dp">
 
                     <LinearLayout
@@ -214,8 +221,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/menu_report"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
+                    app:cardCornerRadius="25dp"
                     android:layout_margin="10dp">
 
                     <LinearLayout
@@ -253,8 +262,10 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/menu_hitung_bunga"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
+                    app:cardCornerRadius="25dp"
                     android:layout_margin="10dp">
 
                     <LinearLayout

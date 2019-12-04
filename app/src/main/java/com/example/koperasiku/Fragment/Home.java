@@ -6,20 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.koperasiku.R;
-import com.example.koperasiku.RegisterActivity;
 import com.example.koperasiku.UserSessionManager;
-
-import java.util.HashMap;
+import com.example.koperasiku.karyawan.KaryawanActivity;
 
 public class Home extends Fragment {
 
@@ -54,7 +49,9 @@ public class Home extends Fragment {
         karyawan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Karyawan terklik", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Karyawan terklik", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), KaryawanActivity.class);
+                startActivity(intent);
             }
         });
 

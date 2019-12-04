@@ -31,6 +31,8 @@ public class UserSessionManager {
     public static final String KEY_NAME = "name";
     public static final String ID = "id";
     public static final String KEY_EMAIL = "email";
+    public static final String KEY_ROLE = "user_role";
+    public static final String KEY_PHONE = "no_telp";
 
 //    // Email address (make variable public to access from outside)
 //    public static final String KEY_EMAIL = "email";
@@ -43,7 +45,7 @@ public class UserSessionManager {
     }
 
     //Create login session
-    public void createUserLoginSession(String id, String name, String email){
+    public void createUserLoginSession(String id, String name, String email, String user_role, String no_telp){
         // Storing login value as TRUE
         editor.putBoolean(IS_USER_LOGIN, true);
 
@@ -51,12 +53,27 @@ public class UserSessionManager {
         editor.putString(KEY_NAME, name);
         editor.putString(ID, id);
         editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_ROLE, user_role);
+        editor.putString(KEY_PHONE, no_telp);
 
 //        // Storing email in pref
 //        editor.putString(KEY_EMAIL, email);
 
         // commit changes
-        editor.commit();
+        editor.apply();
+    }
+
+    public void updateUser(String name, String email){
+        // Storing login value as TRUE
+        // Storing name in pref
+        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_EMAIL, email);
+
+//        // Storing email in pref
+//        editor.putString(KEY_EMAIL, email);
+
+        // commit changes
+        editor.apply();
     }
 
     /**
@@ -101,6 +118,8 @@ public class UserSessionManager {
 
         // user email id
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
+        user.put(KEY_ROLE, pref.getString(KEY_ROLE, null));
+        user.put(KEY_PHONE, pref.getString(KEY_PHONE, null));
 
         // return user
         return user;

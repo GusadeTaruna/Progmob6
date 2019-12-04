@@ -1,5 +1,6 @@
 package com.example.koperasiku.Fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,8 @@ public class Profile extends Fragment {
     FrameLayout rootView;
     Button btnLogout;
     Button btnEdit;
+    TextView tvResultNama;
+    String resultNama;
 
     @Nullable
     @Override
@@ -38,6 +42,10 @@ public class Profile extends Fragment {
         session = new UserSessionManager(getActivity().getApplicationContext());
 
         TextView lblnama = (TextView) rootView.findViewById(R.id.home_nama);
+        TextView lblemail = (TextView) rootView.findViewById(R.id.email_text);
+        TextView lblrole = (TextView) rootView.findViewById(R.id.home_jabatan);
+        TextView lbltelepon = (TextView) rootView.findViewById(R.id.notelp);
+
         btnLogout = (Button) rootView.findViewById(R.id.btnLogout);
         btnEdit = (Button) rootView.findViewById(R.id.btnEdit);
 
@@ -52,7 +60,20 @@ public class Profile extends Fragment {
         final String id = user.get(UserSessionManager.ID);
         final String nama = user.get(UserSessionManager.KEY_NAME);
         final String email = user.get(UserSessionManager.KEY_EMAIL);
-        lblnama.setText(Html.fromHtml(nama));
+        final String user_role = user.get(UserSessionManager.KEY_ROLE);
+        final String no_telp = user.get(UserSessionManager.KEY_PHONE);
+
+        //        Bundle extras = getIntent().getExtras();
+//        if (extras != null)
+//            resultNama = extras.getString("result_nama");
+//        tvResultNama.setText(resultNama);
+        lblnama.setText(nama);
+        lblemail.setText(email);
+        lblrole.setText(user_role);
+        lbltelepon.setText(no_telp);
+
+
+
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

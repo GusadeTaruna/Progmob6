@@ -21,4 +21,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
+    <string name="karyawan_nama">Nama : %1$s</string>
+    <string name="karyawan_email">Email : %1$s</string>
 </resources>

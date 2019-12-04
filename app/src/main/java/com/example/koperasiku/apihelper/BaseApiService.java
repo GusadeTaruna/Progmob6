@@ -28,7 +28,24 @@ public interface BaseApiService {
     @POST("edit/{id}")
     Call<ResponseBody> editProfil(@Path("id") String id,
                                   @Field("name") String name,
-                                  @Field("email") String email);
+                                  @Field("email") String email,
+                                  @Field("password") String password,
+                                  @Field("confirm_password") String confirm_password);
+
+
+    @FormUrlEncoded
+    @POST("registerKaryawan")
+    Call<ResponseBody> registerKaryawan(@Field("name") String name,
+                                       @Field("email") String email,
+                                       @Field("password") String password,
+                                       @Field("confirm_password") String confirm_password);
+
+    @FormUrlEncoded
+    @POST("editKaryawan/{id}")
+    Call<ResponseBody> editKaryawan(@Field("name") String name,
+                                  @Field("email") String email,
+                                  @Field("password") String password,
+                                  @Field("confirm_password") String confirm_password);
 
 
 

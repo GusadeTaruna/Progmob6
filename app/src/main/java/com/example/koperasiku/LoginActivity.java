@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.koperasiku.Fragment.Profile;
 import com.example.koperasiku.MainActivity;
 import com.example.koperasiku.R;
 import com.example.koperasiku.RegisterActivity;
@@ -99,13 +100,15 @@ public class LoginActivity extends AppCompatActivity {
                                     final String nama = jsonRESULTS.getJSONObject("user").getString("name");
                                     final String email = jsonRESULTS.getJSONObject("user").getString("email");
                                     final String id = jsonRESULTS.getJSONObject("user").getString("id");
-                                    session.createUserLoginSession(id,nama,email);
+                                    final String user_role = jsonRESULTS.getJSONObject("user").getString("user_role");
+                                    final String no_telp = jsonRESULTS.getJSONObject("user").getString("no_telp");
+                                    session.createUserLoginSession(id,nama,email,user_role,no_telp);
 //                                    int id = jsonRESULTS.getJSONObject("user").getInt("id");
 //                                    Log.d("debug","id : "+id);
 //                                    Intent intent = new Intent(mContext, MainActivity.class);
                                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
                                     alertDialogBuilder.setTitle("Login Sukses!");
-                                    alertDialogBuilder.setMessage("Nama : "+nama+ "\nRole : Admin");
+                                    alertDialogBuilder.setMessage("Nama : "+nama+ "\nRole : "+user_role);
                                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {

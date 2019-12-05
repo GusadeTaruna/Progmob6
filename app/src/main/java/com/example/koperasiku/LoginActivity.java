@@ -20,6 +20,7 @@ import com.example.koperasiku.R;
 import com.example.koperasiku.RegisterActivity;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
+import com.example.koperasiku.model.LoginResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+//                requestLogin();
                 requestLogin();
             }
         });
@@ -144,5 +146,26 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+//    public void requestLogin2(){
+//        mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString())
+//                .enqueue(new Callback<LoginResponse>() {
+//
+//                    @Override
+//                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+//                        if (response.isSuccessful()) {
+//                            loading.dismiss();
+//                            String name = response.body().getUser().getName();
+//                            Log.d("logged name", "name : "+name);
+//                            Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+//
+//                    }
+//                });
+//    }
 
 }

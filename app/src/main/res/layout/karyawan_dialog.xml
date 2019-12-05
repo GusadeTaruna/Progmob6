@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:inputType="textPersonName"
         android:hint="Nama Karyawan" />
 
     <EditText
@@ -16,12 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:inputType="textEmailAddress"
         android:hint="Email" />
 
     <EditText
         android:id="@+id/etPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
         android:layout_margin="5dp"
         android:hint="Password" />
 
@@ -30,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:inputType="textPassword"
         android:hint="Konfirmasi Password" />
 
 </LinearLayout>

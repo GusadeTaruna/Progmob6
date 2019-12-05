@@ -1,5 +1,7 @@
 package com.example.koperasiku.apihelper;
 
+import com.example.koperasiku.model.LoginResponse;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -14,7 +16,7 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("login")
     Call<ResponseBody> loginRequest(@Field("email") String email,
-                                    @Field("password") String password);
+                                     @Field("password") String password);
 
     // Fungsi ini untuk memanggil API http://10.0.2.2/mahasiswa/register.php
     @FormUrlEncoded
@@ -42,7 +44,8 @@ public interface BaseApiService {
 
     @FormUrlEncoded
     @POST("editKaryawan/{id}")
-    Call<ResponseBody> editKaryawan(@Field("name") String name,
+    Call<ResponseBody> editKaryawan(@Path("id") int id,
+                                  @Field("name") String name,
                                   @Field("email") String email,
                                   @Field("password") String password,
                                   @Field("confirm_password") String confirm_password);

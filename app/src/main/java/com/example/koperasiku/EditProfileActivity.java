@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.koperasiku.Fragment.Home;
+import com.example.koperasiku.Fragment.Profile;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
 
@@ -148,6 +152,11 @@ public class EditProfileActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
                                     finish();
+//                                    Fragment fragment= new Profile();
+//                                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                                    transaction.replace(R.id.page_container, fragment); // fragment container id in first parameter is the  container(Main layout id) of Activity
+//                                    transaction.addToBackStack(null);  // this will manage backstack
+//                                    transaction.commit();
                                 }
                             });
                             AlertDialog alertDialog = alertDialogBuilder.create();

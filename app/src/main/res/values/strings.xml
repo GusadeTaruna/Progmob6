@@ -23,4 +23,13 @@
     <string name="title_profile">Profile</string>
     <string name="karyawan_nama">Nama : %1$s</string>
     <string name="karyawan_email">Email : %1$s</string>
+    <string name="tab_text_1">Speed Dial</string>
+    <string name="tab_text_2">Recents</string>
+    <string name="tab_text_3">Contacts</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>

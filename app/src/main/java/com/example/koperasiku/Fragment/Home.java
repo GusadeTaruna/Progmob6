@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.koperasiku.R;
+import com.example.koperasiku.TransaksiActivity;
 import com.example.koperasiku.UserSessionManager;
 import com.example.koperasiku.karyawan.KaryawanActivity;
 
@@ -65,7 +66,9 @@ public class Home extends Fragment {
         setor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Setor terklik", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Setor terklik", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), TransaksiActivity.class);
+                startActivity(intent);
             }
         });
 

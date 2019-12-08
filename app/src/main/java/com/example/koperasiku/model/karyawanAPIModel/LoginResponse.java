@@ -1,4 +1,4 @@
-package com.example.koperasiku.model;
+package com.example.koperasiku.model.karyawanAPIModel;
 
 import com.google.gson.annotations.SerializedName;
 

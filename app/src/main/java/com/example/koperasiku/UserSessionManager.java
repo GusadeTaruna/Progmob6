@@ -45,13 +45,14 @@ public class UserSessionManager {
     }
 
     //Create login session
-    public void createUserLoginSession(String id, String name, String email, String user_role, String no_telp){
+    public void createUserLoginSession(int id, String token, String nama, String email, String user_role, String no_telp){
         // Storing login value as TRUE
         editor.putBoolean(IS_USER_LOGIN, true);
 
         // Storing name in pref
-        editor.putString(KEY_NAME, name);
-        editor.putString(ID, id);
+        editor.putString("token", token);
+        editor.putInt(ID, id);
+        editor.putString(KEY_NAME, nama);
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_ROLE, user_role);
         editor.putString(KEY_PHONE, no_telp);
@@ -114,7 +115,7 @@ public class UserSessionManager {
 
         // user name
         user.put(KEY_NAME, pref.getString(KEY_NAME, null));
-        user.put(ID, pref.getString(ID, null));
+        user.put(ID, String.valueOf(pref.getInt(ID, 0)));
 
         // user email id
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));

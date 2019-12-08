@@ -20,7 +20,7 @@ import com.example.koperasiku.R;
 import com.example.koperasiku.RegisterActivity;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
-import com.example.koperasiku.model.LoginResponse;
+import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,13 +52,14 @@ public class LoginActivity extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
         initComponents();
+
     }
 
     private void initComponents() {
         etEmail = (EditText) findViewById(R.id.login_email);
         etPassword = (EditText) findViewById(R.id.login_password);
         btnLogin = (Button) findViewById(R.id.login_button);
-//        tvRegister = (TextView) findViewById(R.id.signup_button);
+        tvRegister = (TextView) findViewById(R.id.signup_button);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,13 +70,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-//        tvRegister.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(mContext, RegisterActivity.class));
-//                finish();
-//            }
-//        });
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, RegisterActivity.class));
+                finish();
+            }
+        });
     }
 
     @Override
@@ -86,86 +87,53 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void requestLogin(){
+
+    public void requestLogin(){
         mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString())
-                .enqueue(new Callback<ResponseBody>() {
+                .enqueue(new Callback<LoginResponse>() {
+
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()){
+                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                        if (response.isSuccessful()) {
                             loading.dismiss();
-                            try {
-                                JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                if (jsonRESULTS.getString("error").equals("false")){
-                                    // Jika login berhasil maka data nama yang ada di response API
-                                    // akan diparsing ke activity selanjutnya.
-                                    Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
-                                    final String nama = jsonRESULTS.getJSONObject("user").getString("name");
-                                    final String email = jsonRESULTS.getJSONObject("user").getString("email");
-                                    final String id = jsonRESULTS.getJSONObject("user").getString("id");
-                                    final String user_role = jsonRESULTS.getJSONObject("user").getString("user_role");
-                                    final String no_telp = jsonRESULTS.getJSONObject("user").getString("no_telp");
-                                    session.createUserLoginSession(id,nama,email,user_role,no_telp);
-//                                    int id = jsonRESULTS.getJSONObject("user").getInt("id");
-//                                    Log.d("debug","id : "+id);
-//                                    Intent intent = new Intent(mContext, MainActivity.class);
-                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-                                    alertDialogBuilder.setTitle("Login Sukses!");
-                                    alertDialogBuilder.setMessage("Nama : "+nama+ "\nRole : "+user_role);
-                                    alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            Intent intent = new Intent(mContext, MainActivity.class);
-                                            intent.putExtra("result_nama", nama);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                    });
-                                    AlertDialog alertDialog = alertDialogBuilder.create();
-                                    alertDialog.show();
-                                } else {
-                                    // Jika login gagal
-                                    String error_message = jsonRESULTS.getString("error_msg");
-                                    Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "Berhasil Login", Toast.LENGTH_SHORT).show();
+                            int id = response.body().getUser().getId();
+                            String token = response.body().getUser().getToken();
+                            final String nama = response.body().getUser().getName();
+                            final String email = response.body().getUser().getEmail();
+                            final String user_role = response.body().getUser().getUserRole();
+                            final String telp = response.body().getUser().getNoTelp();
+                            session.createUserLoginSession(id,token,nama,email,user_role,telp);
+                            session.editor.putInt("id",id);
+                            session.editor.putString("access_token",token);
+                            session.editor.apply();
+                            Log.d("debug","token : "+token+"id : "+id);
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+                            alertDialogBuilder.setTitle("Login Sukses!");
+                            alertDialogBuilder.setMessage("Nama : "+nama+ "\nRole : "+user_role);
+                            alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent(mContext, MainActivity.class);
+                                    intent.putExtra("result_nama", nama);
+                                    startActivity(intent);
+                                    finish();
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Log.i("debug", "onResponse: Gagal login");
-                            Toast.makeText(mContext, "Login Gagal", Toast.LENGTH_SHORT).show();
+                            });
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.show();
+                        }else{
                             loading.dismiss();
+                            Toast.makeText(mContext, "Gagal Login", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.e("debug", "onFailure: ERROR > " + t.toString());
+                    public void onFailure(Call<LoginResponse> call, Throwable t) {
                         loading.dismiss();
+                        Toast.makeText(mContext, "Gagal Login", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
-
-//    public void requestLogin2(){
-//        mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString())
-//                .enqueue(new Callback<LoginResponse>() {
-//
-//                    @Override
-//                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-//                        if (response.isSuccessful()) {
-//                            loading.dismiss();
-//                            String name = response.body().getUser().getName();
-//                            Log.d("logged name", "name : "+name);
-//                            Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<LoginResponse> call, Throwable t) {
-//
-//                    }
-//                });
-//    }
 
 }

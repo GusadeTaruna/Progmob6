@@ -1,4 +1,4 @@
-package com.example.koperasiku.model;
+package com.example.koperasiku.model.karyawanAPIModel;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -27,6 +27,9 @@ public class User{
 
 	@SerializedName("email")
 	private String email;
+
+	@SerializedName("token")
+	private String token;
 
 	public void setUserRole(String userRole){
 		this.userRole = userRole;
@@ -92,6 +95,14 @@ public class User{
 		return email;
 	}
 
+	public void setToken(String token){
+		this.token = token;
+	}
+
+	public String getToken(){
+		return token;
+	}
+
 	@Override
  	public String toString(){
 		return 
@@ -104,6 +115,7 @@ public class User{
 			",id = '" + id + '\'' + 
 			",no_telp = '" + noTelp + '\'' + 
 			",email = '" + email + '\'' + 
+			",token = '" + token + '\'' + 
 			"}";
 		}
 }

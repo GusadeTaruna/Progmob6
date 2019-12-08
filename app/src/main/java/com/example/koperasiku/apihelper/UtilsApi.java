@@ -11,4 +11,8 @@ public class UtilsApi {
     public static BaseApiService getAPIService(){
         return RetrofitClient.getClient(BASE_URL_API).create(BaseApiService.class);
     }
+
+    public static BaseApiService getAPIServiceWithToken(String token){
+        return RetrofitClient.getClientWithToken(BASE_URL_API,token).create(BaseApiService.class);
+    }
 }

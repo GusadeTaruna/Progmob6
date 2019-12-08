@@ -1,6 +1,7 @@
 package com.example.koperasiku.apihelper;
 
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
+import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
 
 import okhttp3.ResponseBody;
@@ -31,7 +32,7 @@ public interface BaseApiService {
 
     @FormUrlEncoded
     @POST("edit/{id}")
-    Call<ResponseBody> editProfil(@Path("id") String id,
+    Call<EditResponse> editProfil(@Path("id") int id,
                                   @Field("name") String name,
                                   @Field("email") String email,
                                   @Field("password") String password,

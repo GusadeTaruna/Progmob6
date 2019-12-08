@@ -72,8 +72,51 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
-                startActivity(intent);
+                loading = ProgressDialog.show(getActivity(), null, "Harap Tunggu...", true, false);
+
+                profile = getActivity().getSharedPreferences("AndroidExamplePref", Context.MODE_PRIVATE);
+                final SharedPreferences.Editor edit = profile.edit();
+                final String token = "Bearer "+profile.getString("access_token",null);
+                Log.d("debug","token : "+token);
+                mApiService = UtilsApi.getAPIServiceWithToken(token);
+                mApiService.detailProfile().enqueue(new Callback<DetailResponse>() {
+                    @Override
+                    public void onResponse(Call<DetailResponse> call, Response<DetailResponse> response) {
+                        if (response.isSuccessful()) {
+                            int id = response.body().getId();
+                            String nama = response.body().getName();
+                            String email = response.body().getEmail();
+                            String jabatan = response.body().getUserRole();
+                            String telp = response.body().getNoTelp();
+
+                            edit.putInt("id",id);
+                            edit.putString("token_edit",token);
+                            edit.putString("nama",nama);
+                            edit.putString("email",email);
+                            edit.putString("role",jabatan);
+                            edit.putString("telepon",telp);
+                            edit.apply();
+
+                            Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                            startActivity(intent);
+
+                            loading.dismiss();
+                        }else{
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<DetailResponse> call, Throwable t) {
+                        Log.d("debug","GAGAL");
+                        Toast.makeText(getActivity(), "Tidak bisa edit dalam Mode Offline", Toast.LENGTH_SHORT).show();
+                        loading.dismiss();
+
+                    }
+                });
+
+
             }
         });
 

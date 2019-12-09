@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
+import com.example.koperasiku.model.karyawanAPIModel.RegisterResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -86,27 +87,15 @@ public class RegisterActivity extends AppCompatActivity {
                 etEmail.getText().toString(),
                 etPassword.getText().toString(),
                 etCpassword.getText().toString())
-                .enqueue(new Callback<ResponseBody>() {
+                .enqueue(new Callback<RegisterResponse>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                         if (response.isSuccessful()){
                             Log.i("debug", "onResponse: BERHASIL");
                             loading.dismiss();
-                            try {
-                                JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                if (jsonRESULTS.getString("error").equals("false")){
-                                    Toast.makeText(mContext, "Berhasil Registrasi", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(mContext, LoginActivity.class));
-                                    finish();
-                                } else {
-                                    String error_message = jsonRESULTS.getString("error_msg");
-                                    Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            Toast.makeText(mContext, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(mContext, LoginActivity.class));
+                            finish();
                         } else {
                             Log.i("debug", "onResponse: GA BERHASIL");
                             Toast.makeText(mContext, "Register Gagal", Toast.LENGTH_SHORT).show();
@@ -115,8 +104,9 @@ public class RegisterActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    public void onFailure(Call<RegisterResponse> call, Throwable t) {
                         Log.e("debug", "onFailure: ERROR > " + t.getMessage());
+                        loading.dismiss();
                         Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
                     }
                 });

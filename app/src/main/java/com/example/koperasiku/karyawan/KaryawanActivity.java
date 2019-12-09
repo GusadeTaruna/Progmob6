@@ -150,7 +150,7 @@ public class KaryawanActivity extends AppCompatActivity {
                             if (model == null) {
                                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                                 regisKaryawanDB(karyawanModel);
-                                createDataKaryawan(karyawanModel);
+//                                createDataKaryawan(karyawanModel);
 
                             } else {
                                 updateDataKaryawan(karyawanModel, posisiIndex, model.getId());
@@ -181,44 +181,27 @@ public class KaryawanActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void createDataKaryawan(KaryawanModel model) {
-
-
-//                if (realm != null){
-//                    Log.e("Created", "Database was created");
-//                    Number currentIdNum = realm.where(KaryawanModel.class).max("id");
-//                    int nextId;
-//                    if (currentIdNum == null){
-//                        nextId = 1;
-//                    }else {
-//                        nextId = currentIdNum.intValue() + 1;
-//                    }
-//                    karyawanModel.setId(nextId);
-//                    KaryawanModel model = realm.copyToRealm(karyawanModel);
-//                }else{
-//                    Log.e("ppppp", "execute: Database not Exist");
-//                }
-//            }
-
-        dbRealm.beginTransaction();
-        Number currentIdNum = dbRealm.where(KaryawanModel.class).max("id");
-        int nextId;
-        if (currentIdNum == null){
-            nextId = 1;
-        }else {
-            nextId = currentIdNum.intValue() + 1;
-        }
-
-        KaryawanModel karyawanModel = dbRealm.createObject(KaryawanModel.class,nextId);
-//        int id = dbRealm.where(KaryawanModel.class).max("id").intValue() + 1;
-//        karyawanModel.setId(id);
-        karyawanModel.setName(model.getName());
-        karyawanModel.setEmail(model.getEmail());
-        karyawanModel.setPassword(model.getPassword());
-        dbRealm.commitTransaction();
-        KaryawanArrayList.add(karyawanModel);
-        listKaryawanAdapter.notifyDataSetChanged();
-    }
+//    private void createDataKaryawan(KaryawanModel model) {
+//
+//        dbRealm.beginTransaction();
+//        Number currentIdNum = dbRealm.where(KaryawanModel.class).max("id");
+//        int nextId;
+//        if (currentIdNum == null){
+//            nextId = 1;
+//        }else {
+//            nextId = currentIdNum.intValue() + 1;
+//        }
+//
+//        KaryawanModel karyawanModel = dbRealm.createObject(KaryawanModel.class,nextId);
+////        int id = dbRealm.where(KaryawanModel.class).max("id").intValue() + 1;
+////        karyawanModel.setId(id);
+//        karyawanModel.setName(model.getName());
+//        karyawanModel.setEmail(model.getEmail());
+//        karyawanModel.setPassword(model.getPassword());
+//        dbRealm.commitTransaction();
+//        KaryawanArrayList.add(karyawanModel);
+//        listKaryawanAdapter.notifyDataSetChanged();
+//    }
 
     private void readDataKaryawan() {
         RealmResults<KaryawanModel> hasil = dbRealm.where(KaryawanModel.class).findAll();
@@ -258,7 +241,7 @@ public class KaryawanActivity extends AppCompatActivity {
         return hasil.first();
     }
 
-    public void regisKaryawanDB(KaryawanModel model){
+    public void regisKaryawanDB(final KaryawanModel model){
         //REGISTER KE API
         mApiService.registerKaryawan(model.getName(),
         model.getEmail(),
@@ -274,6 +257,25 @@ public class KaryawanActivity extends AppCompatActivity {
                         JSONObject jsonRESULTS = new JSONObject(response.body().string());
                         if (jsonRESULTS.getString("error").equals("false")){
                             Toast.makeText(mContext, "Registrasi Karyawan Berhasil", Toast.LENGTH_SHORT).show();
+
+                            dbRealm.beginTransaction();
+                            Number currentIdNum = dbRealm.where(KaryawanModel.class).max("id");
+                            int nextId;
+                            if (currentIdNum == null){
+                                nextId = 1;
+                            }else {
+                                nextId = currentIdNum.intValue() + 1;
+                            }
+
+                            KaryawanModel karyawanModel = dbRealm.createObject(KaryawanModel.class,nextId);
+                            //        int id = dbRealm.where(KaryawanModel.class).max("id").intValue() + 1;
+                            //        karyawanModel.setId(id);
+                            karyawanModel.setName(model.getName());
+                            karyawanModel.setEmail(model.getEmail());
+                            karyawanModel.setPassword(model.getPassword());
+                            dbRealm.commitTransaction();
+                            KaryawanArrayList.add(karyawanModel);
+                            listKaryawanAdapter.notifyDataSetChanged();
                         } else {
                             String error_message = jsonRESULTS.getString("error_msg");
                             Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
@@ -293,6 +295,7 @@ public class KaryawanActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("debug", "onFailure: ERROR > " + t.getMessage());
+                loading.dismiss();
                 Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
             }
         });

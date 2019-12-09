@@ -3,6 +3,7 @@ package com.example.koperasiku.apihelper;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
+import com.example.koperasiku.model.karyawanAPIModel.RegisterResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -22,10 +23,10 @@ public interface BaseApiService {
     // Fungsi ini untuk memanggil API http://10.0.2.2/mahasiswa/register.php
     @FormUrlEncoded
     @POST("register")
-    Call<ResponseBody> registerRequest(@Field("name") String name,
-                                       @Field("email") String email,
-                                       @Field("password") String password,
-                                       @Field("confirm_password") String confirm_password);
+    Call<RegisterResponse> registerRequest(@Field("name") String name,
+                                           @Field("email") String email,
+                                           @Field("password") String password,
+                                           @Field("confirm_password") String confirm_password);
 
     @POST("detail")
     Call<DetailResponse> detailProfile();

@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TransaksiActivity"></activity>
+        <activity android:name=".nasabah.TransaksiPenarikan.TransaksiPenarikanActivity"></activity>
+        <activity android:name=".nasabah.RiwayatSetoran.RiwayatTransaksiSetoranActivity" />
+        <activity android:name=".TransaksiActivity" />
         <activity android:name=".karyawan.DetailKaryawanActivity" />
         <activity android:name=".karyawan.KaryawanActivity" />
         <activity android:name=".EditProfileActivity" />

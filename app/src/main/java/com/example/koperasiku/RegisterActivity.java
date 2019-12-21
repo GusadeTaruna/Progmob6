@@ -29,7 +29,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText etNama;
-    EditText etEmail;
+    EditText etEmail,etTelepon;
     EditText etPassword;
     EditText etCpassword;
     Button btnRegister;
@@ -52,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void initComponents() {
         etNama = (EditText) findViewById(R.id.register_name);
         etEmail = (EditText) findViewById(R.id.register_email);
+        etTelepon = (EditText) findViewById(R.id.register_telepon);
         etPassword = (EditText) findViewById(R.id.register_password);
         etCpassword = (EditText) findViewById(R.id.register_confirm_password);
         btnRegister = (Button) findViewById(R.id.register_button);
@@ -85,6 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void requestRegister(){
         mApiService.registerRequest(etNama.getText().toString(),
                 etEmail.getText().toString(),
+                etTelepon.getText().toString(),
                 etPassword.getText().toString(),
                 etCpassword.getText().toString())
                 .enqueue(new Callback<RegisterResponse>() {

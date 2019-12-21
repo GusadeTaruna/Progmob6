@@ -27,91 +27,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/menu_karyawan"
-                    android:layout_width="160dp"
-                    android:layout_height="190dp"
-                    app:cardCornerRadius="25dp"
-                    android:layout_margin="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:background="@drawable/kelola_admin"
-                            android:padding="10dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/nunito_sans_bold"
-                            android:text="Kelola Karyawan"
-                            android:textColor="#00D1A5"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunito_sans_reguler"
-                            android:gravity="center"
-                            android:padding="5dp"
-                            android:text="Halaman untuk mengelola Karyawan"
-                            android:textSize="10dp" />
-
-
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/menu_nasabah"
-                    android:layout_width="160dp"
-                    android:layout_height="190dp"
-                    app:cardCornerRadius="25dp"
-                    android:layout_margin="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:background="@drawable/kelola_nasabah"
-                            android:padding="10dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/nunito_sans_bold"
-                            android:text="Kelola Nasabah"
-                            android:textColor="#00D1A5"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunito_sans_reguler"
-                            android:gravity="center"
-                            android:padding="5dp"
-                            android:text="Halaman untuk mengelola Nasabah"
-                            android:textSize="10dp" />
-
-
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"/>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -236,24 +152,26 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/report"
+                            android:background="@drawable/setoran"
                             android:padding="10dp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="130dp"
+                            android:layout_height="37dp"
                             android:layout_marginTop="10dp"
-                            android:text="Report transaksi"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/nunito_sans_bold"
+                            android:text="Riwayat Transaksi Setoran"
                             android:textColor="#00D1A5"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/nunito_sans_bold"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Halaman untuk melihat laporan transaksi"
+                            android:text="Halaman untuk melihat riwayat transaksi setoran"
                             android:textSize="10dp"
                             android:fontFamily="@font/nunito_sans_reguler"/>
 
@@ -277,24 +195,26 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/hitungbunga"
+                            android:background="@drawable/pinjaman"
                             android:padding="10dp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="129dp"
+                            android:layout_height="37dp"
                             android:layout_marginTop="10dp"
-                            android:text="Hitung Bunga"
+                            android:fontFamily="@font/nunito_sans_bold"
+                            android:gravity="center"
+                            android:text="Riwayat Transaksi Penarikan"
                             android:textColor="#00D1A5"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/nunito_sans_bold"/>
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Halaman untuk menghitung bunga perbulan"
+                            android:text="Halaman untuk melihat riwayat transaksi penarikan"
                             android:textSize="10dp"
                             android:fontFamily="@font/nunito_sans_reguler"/>
 

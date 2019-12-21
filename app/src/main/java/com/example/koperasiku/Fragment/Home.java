@@ -16,6 +16,8 @@ import com.example.koperasiku.R;
 import com.example.koperasiku.TransaksiActivity;
 import com.example.koperasiku.UserSessionManager;
 import com.example.koperasiku.karyawan.KaryawanActivity;
+import com.example.koperasiku.nasabah.RiwayatSetoran.RiwayatTransaksiSetoranActivity;
+import com.example.koperasiku.nasabah.TransaksiPenarikan.TransaksiPenarikanActivity;
 
 public class Home extends Fragment {
 
@@ -40,34 +42,34 @@ public class Home extends Fragment {
             getActivity().finish();
         }
 
-        karyawan = (CardView) rootView.findViewById(R.id.menu_karyawan);
-        nasabah = (CardView) rootView.findViewById(R.id.menu_nasabah);
+//        karyawan = (CardView) rootView.findViewById(R.id.menu_karyawan);
+//        nasabah = (CardView) rootView.findViewById(R.id.menu_nasabah);
         setor = (CardView) rootView.findViewById(R.id.menu_setor);
         tarik = (CardView) rootView.findViewById(R.id.menu_tarik);
         report = (CardView) rootView.findViewById(R.id.menu_report);
         hitung_bunga = (CardView) rootView.findViewById(R.id.menu_hitung_bunga);
 
-        karyawan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Toast.makeText(getActivity(), "Karyawan terklik", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), KaryawanActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        nasabah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Nasabah terklik", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        karyawan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Toast.makeText(getActivity(), "Karyawan terklik", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getActivity(), KaryawanActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        nasabah.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getActivity(), "Nasabah terklik", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         setor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getActivity(), "Setor terklik", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), TransaksiActivity.class);
+                Intent intent = new Intent(getActivity(), TransaksiPenarikanActivity.class);
                 startActivity(intent);
             }
         });
@@ -82,7 +84,9 @@ public class Home extends Fragment {
         report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Report terklik", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Report terklik", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), RiwayatTransaksiSetoranActivity.class);
+                startActivity(intent);
             }
         });
 

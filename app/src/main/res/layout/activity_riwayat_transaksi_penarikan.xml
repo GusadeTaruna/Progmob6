@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".nasabah.RiwayatPenarikan.RiwayatTransaksiPenarikanActivity">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:background="#F9F9F9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@color/colorPrimary"
+        app:tabMode="fixed"></android.support.design.widget.TabLayout>
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_id"
+        android:layout_width="411dp"
+        android:layout_height="611dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tablayout_id"></android.support.v4.view.ViewPager>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="259dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="76dp"
+        android:gravity="center"
+        android:text="Riwayat Penarikan"
+        android:textColor="@color/colorAccent"
+        android:textSize="22dp"
+        android:fontFamily="@font/nunito_sans_reguler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</android.support.constraint.ConstraintLayout>
+
+</ScrollView>

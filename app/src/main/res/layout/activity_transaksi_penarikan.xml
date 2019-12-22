@@ -7,19 +7,22 @@
     tools:context=".nasabah.TransaksiPenarikan.TransaksiPenarikanActivity">
 
     <EditText
-        android:id="@+id/nameField"
+        android:id="@+id/tanggal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:editable="false"
+        android:focusable="false"
         android:layout_marginStart="@dimen/margin_auth"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/margin_auth"
         android:background="@drawable/bg_auth_field"
         android:drawablePadding="@dimen/padding_field"
         android:fontFamily="@font/nunito_sans_reguler"
-        android:inputType="textPersonName"
         android:padding="@dimen/padding_field"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorSecondaryText"
+        android:hint="Pilih tanggal"
         android:textSize="@dimen/text_body_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -27,17 +30,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTanggal" />
 
     <EditText
-        android:id="@+id/emailField"
+        android:id="@+id/nominal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_auth"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/margin_auth"
         android:background="@drawable/bg_auth_field"
         android:drawablePadding="@dimen/padding_field"
+        android:hint="Masukkan Nominal Transaksi"
         android:ems="10"
         android:fontFamily="@font/nunito_sans_reguler"
-        android:inputType="textEmailAddress"
+        android:inputType="numberDecimal"
         android:padding="@dimen/padding_field"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorSecondaryText"
@@ -52,9 +56,9 @@
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="61dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/bg_auth_btn"
         android:fontFamily="@font/nunito_sans_bold"
         android:text="SELESAI"
@@ -63,36 +67,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailField"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textBukti" />
 
     <TextView
         android:id="@+id/tvTanggal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/nunito_sans_reguler"
         android:text="Tanggal Transaksi :"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="@+id/nameField"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="@+id/tanggal"
         app:layout_constraintTop_toBottomOf="@+id/tvJudul" />
 
     <TextView
         android:id="@+id/tvNominal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/nunito_sans_reguler"
         android:text="Nominal Transaksi :"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="@+id/emailField"
-        app:layout_constraintTop_toBottomOf="@+id/nameField" />
+        app:layout_constraintStart_toStartOf="@+id/nominal"
+        app:layout_constraintTop_toBottomOf="@+id/tanggal" />
 
     <TextView
         android:id="@+id/tvJudul"
@@ -109,5 +112,46 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="182dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_auth_btn"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:text="UPLOAD BUKTI"
+        android:textColor="@color/colorTextORIcon"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/nominal"
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toEndOf="@+id/tvUpload"
+        app:layout_constraintTop_toBottomOf="@+id/nominal" />
+
+    <TextView
+        android:id="@+id/textBukti"
+        android:layout_width="183dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito_sans_reguler"
+        android:gravity="center"
+        android:text="Bukti belum terlampir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUpload" />
+
+    <TextView
+        android:id="@+id/tvUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/nunito_sans_reguler"
+        android:text="Bukti Penarikan :"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nominal" />
+
 
 </android.support.constraint.ConstraintLayout>

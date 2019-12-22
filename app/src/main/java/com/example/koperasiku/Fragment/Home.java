@@ -16,6 +16,7 @@ import com.example.koperasiku.R;
 import com.example.koperasiku.TransaksiActivity;
 import com.example.koperasiku.UserSessionManager;
 import com.example.koperasiku.karyawan.KaryawanActivity;
+import com.example.koperasiku.nasabah.RiwayatPenarikan.RiwayatTransaksiPenarikanActivity;
 import com.example.koperasiku.nasabah.RiwayatSetoran.RiwayatTransaksiSetoranActivity;
 import com.example.koperasiku.nasabah.TransaksiPenarikan.TransaksiPenarikanActivity;
 
@@ -77,7 +78,7 @@ public class Home extends Fragment {
         tarik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Tarik terklik", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Tarik terklik", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -93,7 +94,9 @@ public class Home extends Fragment {
         hitung_bunga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Hitung Bunga terklik", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Hitung Bunga terklik", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), RiwayatTransaksiPenarikanActivity.class);
+                startActivity(intent);
             }
         });
 

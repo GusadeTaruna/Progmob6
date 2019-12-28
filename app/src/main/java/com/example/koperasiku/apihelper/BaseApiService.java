@@ -4,12 +4,17 @@ import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
 import com.example.koperasiku.model.karyawanAPIModel.RegisterResponse;
+import com.example.koperasiku.model.nasabahAPIModel.TransaksiResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface BaseApiService {
@@ -55,6 +60,15 @@ public interface BaseApiService {
                                   @Field("email") String email,
                                   @Field("password") String password,
                                   @Field("confirm_password") String confirm_password);
+
+    @Multipart
+    @POST("simpanan")
+    Call<TransaksiResponse> transaksiProses(@Part("tanggal") RequestBody tanggal,
+                                            @Part("jenis_transaksi") int jenis_transaksi,
+                                            @Part("nominal_transaksi") RequestBody nominal_transaksi,
+                                            @Part("id_user_nasabah") RequestBody id_user_nasabah,
+                                            @Part MultipartBody.Part file,
+                                            @Part("buktiUpload") RequestBody filename);
 
 
 

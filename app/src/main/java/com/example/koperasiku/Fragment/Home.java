@@ -19,6 +19,7 @@ import com.example.koperasiku.karyawan.KaryawanActivity;
 import com.example.koperasiku.nasabah.RiwayatPenarikan.RiwayatTransaksiPenarikanActivity;
 import com.example.koperasiku.nasabah.RiwayatSetoran.RiwayatTransaksiSetoranActivity;
 import com.example.koperasiku.nasabah.TransaksiPenarikan.TransaksiPenarikanActivity;
+import com.example.koperasiku.nasabah.TransaksiSetoran.TransaksiSetoranActivity;
 
 public class Home extends Fragment {
 
@@ -70,7 +71,7 @@ public class Home extends Fragment {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getActivity(), "Setor terklik", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), TransaksiPenarikanActivity.class);
+                Intent intent = new Intent(getActivity(), TransaksiSetoranActivity.class);
                 startActivity(intent);
             }
         });
@@ -79,6 +80,8 @@ public class Home extends Fragment {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getActivity(), "Tarik terklik", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), TransaksiPenarikanActivity.class);
+                startActivity(intent);
             }
         });
 

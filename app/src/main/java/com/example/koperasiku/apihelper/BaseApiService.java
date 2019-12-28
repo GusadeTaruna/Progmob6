@@ -64,7 +64,7 @@ public interface BaseApiService {
     @Multipart
     @POST("simpanan")
     Call<TransaksiResponse> transaksiProses(@Part("tanggal") RequestBody tanggal,
-                                            @Part("jenis_transaksi") int jenis_transaksi,
+                                            @Part("jenis_transaksi") RequestBody jenis_transaksi,
                                             @Part("nominal_transaksi") RequestBody nominal_transaksi,
                                             @Part("id_user_nasabah") RequestBody id_user_nasabah,
                                             @Part MultipartBody.Part file,

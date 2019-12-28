@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.koperasiku.R;
 import com.example.koperasiku.UserSessionManager;
 import com.example.koperasiku.apihelper.BaseApiService;
+import com.example.koperasiku.apihelper.RetrofitClient;
 import com.example.koperasiku.apihelper.UtilsApi;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 import com.example.koperasiku.model.nasabahAPIModel.TransaksiResponse;
@@ -135,12 +136,16 @@ public class TransaksiSetoranActivity extends AppCompatActivity implements View.
     public void prosesTransaksi(){
         //REGISTER KE API
         profile = getSharedPreferences("AndroidExamplePref", Context.MODE_PRIVATE);
+        String jenisTransaksi = "1";
         Integer id = profile.getInt("id",0);
         RequestBody nasabahId = RequestBody.create(MediaType.parse("text/plain"), id+"");
         RequestBody nominalTransaksi = RequestBody.create(MediaType.parse("text/plain"), nominal.getText().toString());
         RequestBody tanggal = RequestBody.create(MediaType.parse("text/plain"), dateBayar.getText().toString());
+        RequestBody jenis_transaksi = RequestBody.create(MediaType.parse("text/plain"), jenisTransaksi.toString());
         Log.d("debug","file : "+fileToUpload+"name : "+filename);
-        mApiService.transaksiProses(tanggal, 1, nominalTransaksi, nasabahId, fileToUpload, filename)
+        RetrofitClient.getClient(UtilsApi.BASE_URL_API)
+                .create(BaseApiService.class)
+                .transaksiProses(tanggal, jenis_transaksi, nominalTransaksi, nasabahId, fileToUpload, filename)
                 .enqueue(new Callback<TransaksiResponse>() {
                     @Override
                     public void onResponse(Call<TransaksiResponse> call, Response<TransaksiResponse> response) {
@@ -172,11 +177,11 @@ public class TransaksiSetoranActivity extends AppCompatActivity implements View.
 //            btnUpload.setText(String.valueOf(gambarUri));
             String filePath = getRealPathFromURIPath(gambarUri, TransaksiSetoranActivity.this);
             File file = new File(filePath);
-            Log.d("tag", "Filename " + file.getName());
+            Log.e("tag", "Filename " + file.getName());
             RequestBody mFile = RequestBody.create(MediaType.parse("image/*"), file);
             fileToUpload = MultipartBody.Part.createFormData("image", file.getName(), mFile);
             filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
-            Log.d("debug","file : "+fileToUpload+"name : "+filename);
+            Log.e("debug","file : "+fileToUpload+"name : "+filename);
         }
     }
 

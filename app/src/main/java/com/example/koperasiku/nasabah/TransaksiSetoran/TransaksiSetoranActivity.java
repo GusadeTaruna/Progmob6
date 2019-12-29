@@ -33,6 +33,7 @@ import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.RetrofitClient;
 import com.example.koperasiku.apihelper.UtilsApi;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
+import com.example.koperasiku.model.nasabahAPIModel.Data;
 import com.example.koperasiku.model.nasabahAPIModel.TransaksiResponse;
 
 import org.json.JSONObject;
@@ -45,6 +46,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -61,6 +64,7 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
     private static final int READ_REQUEST_CODE = 300;
     private static final int STORAGE_PERMISSION_CODE = 101;
     Uri gambarUri;
+    Data nasabahModel;
     TextView textBukti;
     ProgressDialog loading;
     BaseApiService mApiService;
@@ -143,7 +147,7 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
         //REGISTER KE API
         profile = getSharedPreferences("AndroidExamplePref", Context.MODE_PRIVATE);
         String jenisTransaksi = "1";
-        Integer id = profile.getInt("id",0);
+        final Integer id = profile.getInt("id",0);
         RequestBody nasabahId = RequestBody.create(MediaType.parse("text/plain"), id+"");
         RequestBody nominalTransaksi = RequestBody.create(MediaType.parse("text/plain"), nominal.getText().toString());
         RequestBody jenis_transaksi = RequestBody.create(MediaType.parse("text/plain"), jenisTransaksi.toString());

@@ -97,7 +97,7 @@ public class HistoriItem{
 		return 
 			"HistoriItem{" + 
 			"nominal_transaksi = '" + nominalTransaksi + '\'' + 
-			",id_user_karyawan = '" + idUserKaryawan + '\'' + 
+			",id_user_karyawan = '" + idUserKaryawan + '\'' +
 			",id = '" + id + '\'' + 
 			",tanggal = '" + tanggal + '\'' + 
 			",jenis_transaksi = '" + jenisTransaksi + '\'' + 

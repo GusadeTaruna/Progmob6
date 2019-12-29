@@ -2,9 +2,9 @@ package com.example.koperasiku.model.nasabahAPIModel;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.realm.RealmObject;
 
-public class Data extends RealmObject {
+
+public class Data {
 
 	@SerializedName("nominal_transaksi")
 	private int nominalTransaksi;

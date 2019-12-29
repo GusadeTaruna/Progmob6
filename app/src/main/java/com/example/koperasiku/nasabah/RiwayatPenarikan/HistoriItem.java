@@ -2,13 +2,13 @@ package com.example.koperasiku.nasabah.RiwayatPenarikan;
 
 import com.google.gson.annotations.SerializedName;
 
-public class HistoriItem{
+public class HistoriItem {
 
 	@SerializedName("nominal_transaksi")
 	private int nominalTransaksi;
 
-	@SerializedName("id_user_karyawan")
-	private Object idUserKaryawan;
+//	@SerializedName("id_user_karyawan")
+//	private Object idUserKaryawan;
 
 	@SerializedName("id")
 	private int id;
@@ -36,13 +36,13 @@ public class HistoriItem{
 		return nominalTransaksi;
 	}
 
-	public void setIdUserKaryawan(Object idUserKaryawan){
-		this.idUserKaryawan = idUserKaryawan;
-	}
-
-	public Object getIdUserKaryawan(){
-		return idUserKaryawan;
-	}
+//	public void setIdUserKaryawan(Object idUserKaryawan){
+//		this.idUserKaryawan = idUserKaryawan;
+//	}
+//
+//	public Object getIdUserKaryawan(){
+//		return idUserKaryawan;
+//	}
 
 	public void setId(int id){
 		this.id = id;
@@ -97,7 +97,7 @@ public class HistoriItem{
 		return 
 			"HistoriItem{" + 
 			"nominal_transaksi = '" + nominalTransaksi + '\'' + 
-			",id_user_karyawan = '" + idUserKaryawan + '\'' + 
+//			",id_user_karyawan = '" + idUserKaryawan + '\'' +
 			",id = '" + id + '\'' + 
 			",tanggal = '" + tanggal + '\'' + 
 			",jenis_transaksi = '" + jenisTransaksi + '\'' + 

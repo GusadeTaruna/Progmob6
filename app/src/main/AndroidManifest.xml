@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.koperasiku">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".BaseApp"
@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".nasabah.TransaksiSetoran.TransaksiSetoranActivity"></activity>
+        <activity android:name=".nasabah.RiwayatSimpanan.RetreiveDataActivity"></activity>
+        <activity android:name=".nasabah.TransaksiSetoran.TransaksiSetoranActivity" />
         <activity android:name=".nasabah.RiwayatPenarikan.RiwayatTransaksiPenarikanActivity" />
         <activity android:name=".nasabah.TransaksiPenarikan.TransaksiPenarikanActivity" />
         <activity android:name=".TransaksiActivity" />
@@ -33,7 +34,5 @@
             </intent-filter>
         </activity>
     </application>
-
-
 
 </manifest>

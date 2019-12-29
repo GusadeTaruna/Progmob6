@@ -10,10 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.koperasiku.R;
 import com.example.koperasiku.UserSessionManager;
-import com.example.koperasiku.nasabah.RiwayatPenarikan.RiwayatTransaksiPenarikanActivity;
+import com.example.koperasiku.nasabah.RiwayatSimpanan.RetreiveDataActivity;
 import com.example.koperasiku.nasabah.TransaksiPenarikan.TransaksiPenarikanActivity;
 import com.example.koperasiku.nasabah.TransaksiSetoran.TransaksiSetoranActivity;
 
@@ -85,7 +86,7 @@ public class Home extends Fragment {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getActivity(), "Report terklik", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), RiwayatTransaksiSetoranActivity.class);
+                Intent intent = new Intent(getActivity(), RetreiveDataActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,9 +94,9 @@ public class Home extends Fragment {
         hitung_bunga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(getActivity(), "Hitung Bunga terklik", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), RiwayatTransaksiPenarikanActivity.class);
-                startActivity(intent);
+                Toast.makeText(getActivity(), "Hitung Bunga terklik", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getActivity(), RiwayatTransaksiPenarikanActivity.class);
+//                startActivity(intent);
             }
         });
 

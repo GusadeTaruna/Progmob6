@@ -8,24 +8,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.koperasiku.EditProfileActivity;
-import com.example.koperasiku.LoginActivity;
-import com.example.koperasiku.MainActivity;
 import com.example.koperasiku.R;
 import com.example.koperasiku.adapter.KaryawanAdapter;
 import com.example.koperasiku.apihelper.BaseApiService;
@@ -68,7 +60,7 @@ public class KaryawanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_karyawan);
+        setContentView(R.layout.activity_nasabah);
 
         mInstance = this;
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

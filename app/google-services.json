@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "611353968936",
+    "firebase_url": "https://progmob6-2a4d8.firebaseio.com",
+    "project_id": "progmob6-2a4d8",
+    "storage_bucket": "progmob6-2a4d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611353968936:android:7ec96236bb58abf47e501d",
+        "android_client_info": {
+          "package_name": "com.example.koperasiku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611353968936-mfgg2bpd3b95s3n2o8mrgql9f98g5bnc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.koperasiku",
+            "certificate_hash": "aa909d616ef157ab906444a46e5f4221431f81e3"
+          }
+        },
+        {
+          "client_id": "611353968936-9u4g71g86r4beeg4pkd4lft980hgmcab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJgFofJegPlNouhCQL-PAd_y8N_uozpY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611353968936-9u4g71g86r4beeg4pkd4lft980hgmcab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

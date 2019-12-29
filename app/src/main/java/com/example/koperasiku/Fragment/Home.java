@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.koperasiku.R;
 import com.example.koperasiku.UserSessionManager;
+import com.example.koperasiku.nasabah.RiwayatPenarikan.TampilDataTarik;
 import com.example.koperasiku.nasabah.RiwayatSimpanan.TampilDataActivity;
 import com.example.koperasiku.nasabah.TransaksiPenarikan.TransaksiPenarikanActivity;
 import com.example.koperasiku.nasabah.TransaksiSetoran.TransaksiSetoranActivity;
@@ -94,9 +95,9 @@ public class Home extends Fragment {
         hitung_bunga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Hitung Bunga terklik", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(getActivity(), RiwayatTransaksiPenarikanActivity.class);
-//                startActivity(intent);
+//                Toast.makeText(getActivity(), "Hitung Bunga terklik", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), TampilDataTarik.class);
+                startActivity(intent);
             }
         });
 

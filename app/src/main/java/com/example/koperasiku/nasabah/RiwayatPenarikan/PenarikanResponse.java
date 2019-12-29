@@ -1,9 +1,10 @@
-package com.example.koperasiku.nasabah.RiwayatSimpanan;
+package com.example.koperasiku.nasabah.RiwayatPenarikan;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class SimpananResponse{
+
+public class PenarikanResponse{
 
 	@SerializedName("uang")
 	private Uang uang;
@@ -52,7 +53,7 @@ public class SimpananResponse{
 	@Override
  	public String toString(){
 		return 
-			"SimpananResponse{" + 
+			"PenarikanResponse{" + 
 			"uang = '" + uang + '\'' + 
 			",histori = '" + histori + '\'' + 
 			",error = '" + error + '\'' + 

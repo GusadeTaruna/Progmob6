@@ -153,9 +153,11 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             loading.dismiss();
                             Toast.makeText(TransaksiSetoranActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                            finish();
                         }else{
                             loading.dismiss();
                             Toast.makeText(TransaksiSetoranActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
                     @Override
@@ -174,7 +176,7 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
         if(requestCode == REQUEST_GALLERY_CODE && resultCode == RESULT_OK){
             gambarUri = data.getData();
             Log.d("URI :", String.valueOf(gambarUri));
-//            textBukti.setText("");
+            textBukti.setText("");
 //            btnUpload.setText(String.valueOf(gambarUri));
             String filePath = getRealPathFromURIPath(gambarUri, TransaksiSetoranActivity.this);
             File file = new File(filePath);

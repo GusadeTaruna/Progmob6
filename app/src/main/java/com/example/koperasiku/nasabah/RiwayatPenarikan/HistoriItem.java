@@ -1,8 +1,8 @@
-package com.example.koperasiku.nasabah.RiwayatSimpanan;
+package com.example.koperasiku.nasabah.RiwayatPenarikan;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SimpanItem{
+public class HistoriItem{
 
 	@SerializedName("nominal_transaksi")
 	private int nominalTransaksi;
@@ -23,7 +23,7 @@ public class SimpanItem{
 	private int idUserNasabah;
 
 	@SerializedName("bukti_pembayaran")
-	private String buktiPembayaran;
+	private Object buktiPembayaran;
 
 	@SerializedName("status")
 	private String status;
@@ -76,11 +76,11 @@ public class SimpanItem{
 		return idUserNasabah;
 	}
 
-	public void setBuktiPembayaran(String buktiPembayaran){
+	public void setBuktiPembayaran(Object buktiPembayaran){
 		this.buktiPembayaran = buktiPembayaran;
 	}
 
-	public String getBuktiPembayaran(){
+	public Object getBuktiPembayaran(){
 		return buktiPembayaran;
 	}
 
@@ -95,7 +95,7 @@ public class SimpanItem{
 	@Override
  	public String toString(){
 		return 
-			"SimpanItem{" + 
+			"HistoriItem{" + 
 			"nominal_transaksi = '" + nominalTransaksi + '\'' + 
 			",id_user_karyawan = '" + idUserKaryawan + '\'' + 
 			",id = '" + id + '\'' + 

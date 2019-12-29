@@ -17,9 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".nasabah.RiwayatSimpanan.TampilDataActivity"></activity>
-        <activity android:name=".nasabah.RiwayatSimpanan.RetreiveDataActivity" />
+        <activity android:name=".nasabah.RiwayatPenarikan.TampilDataTarik"></activity>
         <activity android:name=".nasabah.TransaksiSetoran.TransaksiSetoranActivity" />
-        <activity android:name=".nasabah.RiwayatPenarikan.RiwayatTransaksiPenarikanActivity" />
         <activity android:name=".nasabah.TransaksiPenarikan.TransaksiPenarikanActivity" />
         <activity android:name=".TransaksiActivity" />
         <activity android:name=".karyawan.DetailKaryawanActivity" />

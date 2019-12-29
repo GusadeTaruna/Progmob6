@@ -1,12 +1,12 @@
-package com.example.koperasiku.nasabah.RiwayatSimpanan;
+package com.example.koperasiku.nasabah.RiwayatPenarikan;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.content.SharedPreferences;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -35,19 +35,17 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData> {
     public void onBindViewHolder(HolderData holder, int position) {
         HistoriItem dm = mList.get(position);
 
+
         String date = String.valueOf(dm.getTanggal());
         holder.tanggal.setText(date);
         String nominalTransaksi = String.valueOf(dm.getNominalTransaksi());
         holder.nominal.setText(nominalTransaksi);
         holder.status.setText(dm.getStatus());
-        Log.e("debug","STATUS : "+dm.getStatus());
         if(dm.getStatus()=="Not Verified"){
             holder.verif.setVisibility(View.VISIBLE);
         }else{
             holder.verif.setVisibility(View.GONE);
         }
-
-
 
     }
 
@@ -69,5 +67,4 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData> {
             verif = (Button) v.findViewById(R.id.btnVerif);
         }
     }
-
 }

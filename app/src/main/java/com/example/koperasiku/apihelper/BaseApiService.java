@@ -5,6 +5,7 @@ import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
 import com.example.koperasiku.model.karyawanAPIModel.RegisterResponse;
 import com.example.koperasiku.model.nasabahAPIModel.TransaksiResponse;
+import com.example.koperasiku.nasabah.RiwayatSimpanan.SimpananResponse;
 
 import java.util.List;
 
@@ -40,8 +41,10 @@ public interface BaseApiService {
     @POST("detail")
     Call<DetailResponse> detailProfile();
 
-//    @GET("not_verify_simpan")
-//    Call<List<SimpanItem>> getSimpanItem();
+
+
+    @POST("not_verify_simpan")
+    Call<SimpananResponse> getSimpanItem();
 
     @FormUrlEncoded
     @POST("edit/{id}")

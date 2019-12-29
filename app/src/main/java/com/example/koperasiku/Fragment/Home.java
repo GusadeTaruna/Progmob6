@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.koperasiku.R;
 import com.example.koperasiku.UserSessionManager;
-import com.example.koperasiku.nasabah.RiwayatSimpanan.RetreiveDataActivity;
+import com.example.koperasiku.nasabah.RiwayatSimpanan.TampilDataActivity;
 import com.example.koperasiku.nasabah.TransaksiPenarikan.TransaksiPenarikanActivity;
 import com.example.koperasiku.nasabah.TransaksiSetoran.TransaksiSetoranActivity;
 
@@ -86,7 +86,7 @@ public class Home extends Fragment {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getActivity(), "Report terklik", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), RetreiveDataActivity.class);
+                Intent intent = new Intent(getActivity(), TampilDataActivity.class);
                 startActivity(intent);
             }
         });

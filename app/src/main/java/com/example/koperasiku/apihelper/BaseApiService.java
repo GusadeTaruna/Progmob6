@@ -5,7 +5,6 @@ import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
 import com.example.koperasiku.model.karyawanAPIModel.RegisterResponse;
 import com.example.koperasiku.model.nasabahAPIModel.TransaksiResponse;
-import com.example.koperasiku.nasabah.RiwayatSimpanan.SimpanItem;
 
 import java.util.List;
 

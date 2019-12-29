@@ -36,6 +36,7 @@ import org.w3c.dom.Text;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -47,7 +48,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TransaksiSetoranActivity extends AppCompatActivity implements View.OnClickListener {
+public class TransaksiSetoranActivity extends AppCompatActivity {
 
     Button btnUpload;
     Button btnUpdate;
@@ -64,9 +65,10 @@ public class TransaksiSetoranActivity extends AppCompatActivity implements View.
     RequestBody filename;
     MultipartBody.Part fileToUpload;
 
-    private EditText dateBayar;
+    private TextView dateBayar;
     private DatePickerDialog fromDatePickerDialog;
-    private SimpleDateFormat dateFormatter;
+//    private SimpleDateFormat dateFormatter;
+    String dateFormatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,42 +98,42 @@ public class TransaksiSetoranActivity extends AppCompatActivity implements View.
             }
         });
 
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(new Date());
+        dateBayar = (TextView) findViewById(R.id.tanggal);
+        dateBayar.setText(dateFormatter);
 
-        findViewsById();
-        setDateTimeField();
 
-    }
-
-    private void findViewsById() {
-        dateBayar = (EditText) findViewById(R.id.tanggal);
-        dateBayar.setInputType(InputType.TYPE_NULL);
-        dateBayar.requestFocus();
-    }
-
-    private void setDateTimeField() {
-        dateBayar.setOnClickListener(this);
-
-        Calendar newCalendar = Calendar.getInstance();
-        fromDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-                dateBayar.setText(dateFormatter.format(newDate.getTime()));
-            }
-
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+//        findViewsById();
+//        setDateTimeField();
 
     }
 
-    @Override
-    public void onClick(View view) {
-        fromDatePickerDialog.show();
-    }
+//    private void findViewsById() {
+//        dateBayar = (EditText) findViewById(R.id.tanggal);
+//        dateBayar.setInputType(InputType.TYPE_NULL);
+//        dateBayar.requestFocus();
+//    }
 
-
-
+//    private void setDateTimeField() {
+//        dateBayar.setOnClickListener(this);
+//
+//        Calendar newCalendar = Calendar.getInstance();
+//        fromDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+//
+//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                Calendar newDate = Calendar.getInstance();
+//                newDate.set(year, monthOfYear, dayOfMonth);
+//                dateBayar.setText(dateFormatter.format(newDate.getTime()));
+//            }
+//
+//        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+//
+//    }
+//
+//    @Override
+//    public void onClick(View view) {
+//        fromDatePickerDialog.show();
+//    }
 
     public void prosesTransaksi(){
         //REGISTER KE API
@@ -140,12 +142,11 @@ public class TransaksiSetoranActivity extends AppCompatActivity implements View.
         Integer id = profile.getInt("id",0);
         RequestBody nasabahId = RequestBody.create(MediaType.parse("text/plain"), id+"");
         RequestBody nominalTransaksi = RequestBody.create(MediaType.parse("text/plain"), nominal.getText().toString());
-        RequestBody tanggal = RequestBody.create(MediaType.parse("text/plain"), dateBayar.getText().toString());
         RequestBody jenis_transaksi = RequestBody.create(MediaType.parse("text/plain"), jenisTransaksi.toString());
         Log.d("debug","file : "+fileToUpload+"name : "+filename);
         RetrofitClient.getClient(UtilsApi.BASE_URL_API)
                 .create(BaseApiService.class)
-                .transaksiProses(tanggal, jenis_transaksi, nominalTransaksi, nasabahId, fileToUpload, filename)
+                .transaksiProses(jenis_transaksi, nominalTransaksi, nasabahId, fileToUpload)
                 .enqueue(new Callback<TransaksiResponse>() {
                     @Override
                     public void onResponse(Call<TransaksiResponse> call, Response<TransaksiResponse> response) {
@@ -179,7 +180,7 @@ public class TransaksiSetoranActivity extends AppCompatActivity implements View.
             File file = new File(filePath);
             Log.e("tag", "Filename " + file.getName());
             RequestBody mFile = RequestBody.create(MediaType.parse("image/*"), file);
-            fileToUpload = MultipartBody.Part.createFormData("image", file.getName(), mFile);
+            fileToUpload = MultipartBody.Part.createFormData("buktiUpload", file.getName(), mFile);
             filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
             Log.e("debug","file : "+fileToUpload+"name : "+filename);
         }

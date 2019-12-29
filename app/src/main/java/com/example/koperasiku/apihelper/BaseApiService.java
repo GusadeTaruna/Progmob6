@@ -61,14 +61,21 @@ public interface BaseApiService {
                                   @Field("password") String password,
                                   @Field("confirm_password") String confirm_password);
 
+//    @FormUrlEncoded
+//    @POST("simpanan")
+//    Call<TransaksiResponse> transaksiProses(@Path("tanggal") String tanggal,
+//                                    @Field("jenis_transaksi") String jenis_transaksi,
+//                                    @Field("nominal_transaksi") String nominal_transaksi,
+//                                    @Field("id_user_nasabah") int id_user_nasabah,
+//                                    @Field("buktiUpload") String buktiUpload);
+
     @Multipart
     @POST("simpanan")
-    Call<TransaksiResponse> transaksiProses(@Part("tanggal") RequestBody tanggal,
-                                            @Part("jenis_transaksi") RequestBody jenis_transaksi,
+    Call<TransaksiResponse> transaksiProses(@Part("jenis_transaksi") RequestBody jenis_transaksi,
                                             @Part("nominal_transaksi") RequestBody nominal_transaksi,
                                             @Part("id_user_nasabah") RequestBody id_user_nasabah,
-                                            @Part MultipartBody.Part file,
-                                            @Part("buktiUpload") RequestBody filename);
+                                            @Part MultipartBody.Part buktiUpload);
+//                                            @Part("filename") RequestBody filename);
 
 
 

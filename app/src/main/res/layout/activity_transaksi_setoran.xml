@@ -6,23 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".nasabah.TransaksiSetoran.TransaksiSetoranActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/tanggal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:editable="false"
         android:focusable="false"
         android:layout_marginStart="@dimen/margin_auth"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/margin_auth"
-        android:background="@drawable/bg_auth_field"
         android:drawablePadding="@dimen/padding_field"
         android:fontFamily="@font/nunito_sans_reguler"
         android:padding="@dimen/padding_field"
         android:textColor="@color/colorPrimaryText"
         android:textColorHint="@color/colorSecondaryText"
-        android:hint="Pilih tanggal"
         android:textSize="@dimen/text_body_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

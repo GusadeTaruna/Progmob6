@@ -51,6 +51,7 @@ import com.example.koperasiku.Fragment.Notification;
 import com.example.koperasiku.Fragment.Profile;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
+import com.example.koperasiku.nasabah.RiwayatPenarikan.PenarikanResponse;
 import com.example.koperasiku.nasabah.RiwayatSimpanan.HistoriItem;
 import com.example.koperasiku.nasabah.RiwayatSimpanan.SimpananResponse;
 import com.example.koperasiku.room.AppDatabase;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences profile;
     BaseApiService mApiService = UtilsApi.getAPIService();
     private List<HistoriItem> mItems = new ArrayList<>();
+    private List<com.example.koperasiku.nasabah.RiwayatPenarikan.HistoriItem> nItems = new ArrayList<>();
     private AppDatabase db;
 
     @Override
@@ -103,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                         simpanan.setNominalTransaksi(mItems.get(i).getNominalTransaksi());
                         simpanan.setIdUserNasabah(mItems.get(i).getIdUserNasabah());
                         simpanan.setStatus(mItems.get(i).getStatus());
-                        simpanan.setIdUserKaryawan((Integer) mItems.get(i).getIdUserKaryawan());
+                        simpanan.setIdUserKaryawan(mItems.get(i).getIdUserKaryawan());
                         simpanan.setBuktiPembayaran(mItems.get(i).getBuktiPembayaran());
                         db.simpananDAO().insertSimpanan(mItems);
                         Log.d("retro", "berhasil insert ke sqllite");
@@ -119,6 +121,40 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SimpananResponse> call, Throwable t) {
+                Log.d("debug","GAGAL");
+                Toast.makeText(MainActivity.this, "GAGAL", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mApiService.getTarikItem(id).enqueue(new Callback<PenarikanResponse>() {
+            @Override
+            public void onResponse(Call<PenarikanResponse> call, Response<PenarikanResponse> response) {
+                if (response.isSuccessful()) {
+                    nItems = response.body().getHistori();
+                    db = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "db_koperasi").allowMainThreadQueries().build();
+                    HistoriItem simpanan = new HistoriItem();
+                    for(int i = 0; i < mItems.size(); i++){
+                        simpanan.setId(mItems.get(i).getId());
+                        simpanan.setTanggal(mItems.get(i).getTanggal());
+                        simpanan.setJenisTransaksi(mItems.get(i).getJenisTransaksi());
+                        simpanan.setNominalTransaksi(mItems.get(i).getNominalTransaksi());
+                        simpanan.setIdUserNasabah(mItems.get(i).getIdUserNasabah());
+                        simpanan.setStatus(mItems.get(i).getStatus());
+                        simpanan.setIdUserKaryawan(mItems.get(i).getIdUserKaryawan());
+                        simpanan.setBuktiPembayaran(mItems.get(i).getBuktiPembayaran());
+                        db.simpananDAO().insertSimpanan(mItems);
+                        Log.d("retro", "berhasil insert ke sqllite");
+                    }
+
+
+                }else{
+                    Log.d("retro", "RESPONSE : "+response.body().getHistori() );
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PenarikanResponse> call, Throwable t) {
                 Log.d("debug","GAGAL");
                 Toast.makeText(MainActivity.this, "GAGAL", Toast.LENGTH_SHORT).show();
             }

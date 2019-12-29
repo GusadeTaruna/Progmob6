@@ -1,16 +1,21 @@
 package com.example.koperasiku.nasabah.RiwayatPenarikan;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
-public class HistoriItem {
+@Entity(tableName = "tb_simpanan")
+public class HistoriItem{
+
 
 	@SerializedName("nominal_transaksi")
 	private int nominalTransaksi;
 
-//	@SerializedName("id_user_karyawan")
-//	private Object idUserKaryawan;
+	@SerializedName("id_user_karyawan")
+	private int idUserKaryawan;
 
-	@SerializedName("id")
+	@PrimaryKey@SerializedName("id")
 	private int id;
 
 	@SerializedName("tanggal")
@@ -23,7 +28,7 @@ public class HistoriItem {
 	private int idUserNasabah;
 
 	@SerializedName("bukti_pembayaran")
-	private Object buktiPembayaran;
+	private String buktiPembayaran;
 
 	@SerializedName("status")
 	private String status;
@@ -36,13 +41,13 @@ public class HistoriItem {
 		return nominalTransaksi;
 	}
 
-//	public void setIdUserKaryawan(Object idUserKaryawan){
-//		this.idUserKaryawan = idUserKaryawan;
-//	}
-//
-//	public Object getIdUserKaryawan(){
-//		return idUserKaryawan;
-//	}
+	public void setIdUserKaryawan(int idUserKaryawan){
+		this.idUserKaryawan = idUserKaryawan;
+	}
+
+	public int getIdUserKaryawan(){
+		return idUserKaryawan;
+	}
 
 	public void setId(int id){
 		this.id = id;
@@ -76,11 +81,11 @@ public class HistoriItem {
 		return idUserNasabah;
 	}
 
-	public void setBuktiPembayaran(Object buktiPembayaran){
+	public void setBuktiPembayaran(String buktiPembayaran){
 		this.buktiPembayaran = buktiPembayaran;
 	}
 
-	public Object getBuktiPembayaran(){
+	public String getBuktiPembayaran(){
 		return buktiPembayaran;
 	}
 
@@ -93,17 +98,17 @@ public class HistoriItem {
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"HistoriItem{" + 
-			"nominal_transaksi = '" + nominalTransaksi + '\'' + 
-//			",id_user_karyawan = '" + idUserKaryawan + '\'' +
-			",id = '" + id + '\'' + 
-			",tanggal = '" + tanggal + '\'' + 
-			",jenis_transaksi = '" + jenisTransaksi + '\'' + 
-			",id_user_nasabah = '" + idUserNasabah + '\'' + 
-			",bukti_pembayaran = '" + buktiPembayaran + '\'' + 
-			",status = '" + status + '\'' + 
-			"}";
-		}
+	public String toString(){
+		return
+				"HistoriItem{" +
+						"nominal_transaksi = '" + nominalTransaksi + '\'' +
+						",id_user_karyawan = '" + idUserKaryawan + '\'' +
+						",id = '" + id + '\'' +
+						",tanggal = '" + tanggal + '\'' +
+						",jenis_transaksi = '" + jenisTransaksi + '\'' +
+						",id_user_nasabah = '" + idUserNasabah + '\'' +
+						",bukti_pembayaran = '" + buktiPembayaran + '\'' +
+						",status = '" + status + '\'' +
+						"}";
+	}
 }

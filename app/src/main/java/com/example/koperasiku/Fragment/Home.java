@@ -10,14 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.example.koperasiku.R;
-import com.example.koperasiku.TransaksiActivity;
 import com.example.koperasiku.UserSessionManager;
-import com.example.koperasiku.karyawan.KaryawanActivity;
 import com.example.koperasiku.nasabah.RiwayatPenarikan.RiwayatTransaksiPenarikanActivity;
-import com.example.koperasiku.nasabah.RiwayatSetoran.RiwayatTransaksiSetoranActivity;
 import com.example.koperasiku.nasabah.TransaksiPenarikan.TransaksiPenarikanActivity;
 import com.example.koperasiku.nasabah.TransaksiSetoran.TransaksiSetoranActivity;
 

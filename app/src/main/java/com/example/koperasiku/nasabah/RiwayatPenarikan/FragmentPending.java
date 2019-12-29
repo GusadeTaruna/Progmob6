@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.koperasiku.R;
-import com.example.koperasiku.nasabah.RiwayatSetoran.RecyclerViewAdapterPending;
-import com.example.koperasiku.nasabah.RiwayatSetoran.model.Pending;
 
 import java.util.ArrayList;
 import java.util.List;

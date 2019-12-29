@@ -6,17 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".nasabah.TransaksiPenarikan.TransaksiPenarikanActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/tanggal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:editable="false"
         android:focusable="false"
         android:layout_marginStart="@dimen/margin_auth"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/margin_auth"
-        android:background="@drawable/bg_auth_field"
         android:drawablePadding="@dimen/padding_field"
         android:fontFamily="@font/nunito_sans_reguler"
         android:padding="@dimen/padding_field"
@@ -56,7 +53,7 @@
         android:layout_width="327dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="68dp"
         android:background="@drawable/bg_auth_btn"
@@ -67,7 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textBukti" />
+        app:layout_constraintTop_toBottomOf="@+id/nominal" />
 
     <TextView
         android:id="@+id/tvTanggal"
@@ -112,46 +109,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnUpload"
-        android:layout_width="182dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_auth_btn"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:text="UPLOAD BUKTI"
-        android:textColor="@color/colorTextORIcon"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="@+id/nominal"
-        app:layout_constraintHorizontal_bias="0.811"
-        app:layout_constraintStart_toEndOf="@+id/tvUpload"
-        app:layout_constraintTop_toBottomOf="@+id/nominal" />
-
-    <TextView
-        android:id="@+id/textBukti"
-        android:layout_width="183dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/nunito_sans_reguler"
-        android:gravity="center"
-        android:text="Bukti belum terlampir"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnUpload" />
-
-    <TextView
-        android:id="@+id/tvUpload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/nunito_sans_reguler"
-        android:text="Bukti Penarikan :"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nominal" />
 
 
 </android.support.constraint.ConstraintLayout>

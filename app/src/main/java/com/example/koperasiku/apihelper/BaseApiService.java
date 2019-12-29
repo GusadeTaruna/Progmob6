@@ -37,6 +37,8 @@ public interface BaseApiService {
                                            @Field("password") String password,
                                            @Field("c_password") String c_password);
 
+
+
     @POST("detail")
     Call<DetailResponse> detailProfile();
 

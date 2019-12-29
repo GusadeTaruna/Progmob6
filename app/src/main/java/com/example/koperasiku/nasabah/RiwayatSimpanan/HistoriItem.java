@@ -1,16 +1,21 @@
 package com.example.koperasiku.nasabah.RiwayatSimpanan;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "tb_simpanan")
 public class HistoriItem{
+
 
 	@SerializedName("nominal_transaksi")
 	private int nominalTransaksi;
 
 	@SerializedName("id_user_karyawan")
-	private Object idUserKaryawan;
+	private int idUserKaryawan;
 
-	@SerializedName("id")
+	@PrimaryKey@SerializedName("id")
 	private int id;
 
 	@SerializedName("tanggal")
@@ -36,11 +41,11 @@ public class HistoriItem{
 		return nominalTransaksi;
 	}
 
-	public void setIdUserKaryawan(Object idUserKaryawan){
+	public void setIdUserKaryawan(int idUserKaryawan){
 		this.idUserKaryawan = idUserKaryawan;
 	}
 
-	public Object getIdUserKaryawan(){
+	public int getIdUserKaryawan(){
 		return idUserKaryawan;
 	}
 

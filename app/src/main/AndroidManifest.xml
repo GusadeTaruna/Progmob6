@@ -18,8 +18,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".nasabah.RiwayatSimpanan.TampilDataActivity"></activity>
-        <activity android:name=".nasabah.RiwayatPenarikan.TampilDataTarik"></activity>
+        <activity android:name=".karyawan.HitungBungaActivity"></activity>
+        <activity android:name=".karyawan.ReportTransaksiActivity" />
+        <activity android:name=".karyawan.KelolaNasabahActivity" />
+        <activity android:name=".karyawan.verifikasiTransaksiActivity" />
+        <activity android:name=".nasabah.RiwayatSimpanan.TampilDataActivity" />
+        <activity android:name=".nasabah.RiwayatPenarikan.TampilDataTarik" />
+        <activity android:name=".MainActivity2">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity android:name=".nasabah.TransaksiSetoran.TransaksiSetoranActivity" />
         <activity android:name=".nasabah.TransaksiPenarikan.TransaksiPenarikanActivity" />
         <activity android:name=".TransaksiActivity" />

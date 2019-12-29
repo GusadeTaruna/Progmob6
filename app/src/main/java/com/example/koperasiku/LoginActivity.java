@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                             session.createUserLoginSession(id,token,nama,email,user_role,telp);
                             session.editor.putInt("id",id);
                             session.editor.putString("access_token",token);
+                            session.editor.putString("role",user_role);
                             session.editor.apply();
                             Log.d("debug","token : "+token+"id : "+id);
                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
@@ -114,10 +115,19 @@ public class LoginActivity extends AppCompatActivity {
                             alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(mContext, MainActivity.class);
-                                    intent.putExtra("result_nama", nama);
-                                    startActivity(intent);
-                                    finish();
+//                                    Log.d("debug","ROLEKU : "+user_role);
+                                    if(user_role.equals("Admin")){
+                                        Intent intent = new Intent(mContext, MainActivity2.class);
+                                        intent.putExtra("result_nama", nama);
+                                        startActivity(intent);
+                                        finish();
+                                    }else if(user_role.equals("Nasabah")){
+                                        Intent intent = new Intent(mContext, MainActivity.class);
+                                        intent.putExtra("result_nama", nama);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
                                 }
                             });
                             AlertDialog alertDialog = alertDialogBuilder.create();

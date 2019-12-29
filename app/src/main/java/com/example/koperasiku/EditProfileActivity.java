@@ -155,6 +155,8 @@ public class EditProfileActivity extends AppCompatActivity {
 //        RequestBody formid = RequestBody.create(MediaType.parse("text/plain"), id+"");
 //        RequestBody name = RequestBody.create(MediaType.parse("text/plain"), etname.getText().toString());
 //        RequestBody email = RequestBody.create(MediaType.parse("text/plain"), etEmail.getText().toString());
+        profile = getSharedPreferences("AndroidExamplePref", Context.MODE_PRIVATE);
+        final String user_role = profile.getString("role",null);
         mApiService.editProfil(id,etname.getText().toString(), etEmail.getText().toString(), etPass.getText().toString(), confirmPass.getText().toString())
         .enqueue(new Callback<EditResponse>() {
             @Override
@@ -172,8 +174,14 @@ public class EditProfileActivity extends AppCompatActivity {
                     alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
-                            finish();
+                            if(user_role.equals("Nasabah")){
+                                startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
+                                finish();
+                            }else if(user_role.equals("Admin")){
+                                startActivity(new Intent(EditProfileActivity.this, MainActivity2.class));
+                                finish();
+                            }
+
 //                                    Fragment fragment= new Profile();
 //                                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //                                    transaction.replace(R.id.page_container, fragment); // fragment container id in first parameter is the  container(Main layout id) of Activity

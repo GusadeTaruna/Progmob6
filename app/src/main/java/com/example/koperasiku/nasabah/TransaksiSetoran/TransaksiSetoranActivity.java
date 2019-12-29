@@ -1,15 +1,20 @@
 package com.example.koperasiku.nasabah.TransaksiSetoran;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -54,6 +59,7 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
     Button btnUpdate;
     private static final int REQUEST_GALLERY_CODE = 200;
     private static final int READ_REQUEST_CODE = 300;
+    private static final int STORAGE_PERMISSION_CODE = 101;
     Uri gambarUri;
     TextView textBukti;
     ProgressDialog loading;
@@ -84,9 +90,7 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK);
-                openGalleryIntent.setType("image/*");
-                startActivityForResult(openGalleryIntent, REQUEST_GALLERY_CODE);
+                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
             }
         });
 
@@ -198,5 +202,28 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
             return cursor.getString(idx);
         }
     }
+
+    public void checkPermission(String permission, int requestCode)
+    {
+        if (ContextCompat.checkSelfPermission(TransaksiSetoranActivity.this, permission)
+                == PackageManager.PERMISSION_DENIED) {
+
+            // Requesting the permission
+            ActivityCompat.requestPermissions(TransaksiSetoranActivity.this,
+                    new String[] { permission },
+                    requestCode);
+        }
+        else {
+//            Toast.makeText(TransaksiSetoranActivity.this,
+//                    "Permission already granted",
+//                    Toast.LENGTH_SHORT)
+//                    .show();
+            Intent openGalleryIntent = new Intent(Intent.ACTION_PICK);
+            openGalleryIntent.setType("image/*");
+            startActivityForResult(openGalleryIntent, REQUEST_GALLERY_CODE);
+        }
+    }
+
+
 
 }

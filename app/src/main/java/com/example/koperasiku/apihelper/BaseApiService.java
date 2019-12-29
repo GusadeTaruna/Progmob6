@@ -41,8 +41,8 @@ public interface BaseApiService {
     @POST("detail")
     Call<DetailResponse> detailProfile();
 
-    @GET("not_verify_simpan")
-    Call<List<SimpanItem>> getSimpanItem();
+//    @GET("not_verify_simpan")
+//    Call<List<SimpanItem>> getSimpanItem();
 
     @FormUrlEncoded
     @POST("edit/{id}")

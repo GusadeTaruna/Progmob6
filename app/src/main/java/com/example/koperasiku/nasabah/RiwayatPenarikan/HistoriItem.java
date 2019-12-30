@@ -5,7 +5,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "tb_simpanan")
+@Entity(tableName = "tb_penarikan")
 public class HistoriItem{
 
 

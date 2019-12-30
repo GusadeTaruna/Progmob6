@@ -132,16 +132,16 @@ public class MainActivity extends AppCompatActivity {
                     nItems = response.body().getHistori();
                     db = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "db_koperasi").allowMainThreadQueries().build();
                     HistoriItem simpanan = new HistoriItem();
-                    for(int i = 0; i < mItems.size(); i++){
-                        simpanan.setId(mItems.get(i).getId());
-                        simpanan.setTanggal(mItems.get(i).getTanggal());
-                        simpanan.setJenisTransaksi(mItems.get(i).getJenisTransaksi());
-                        simpanan.setNominalTransaksi(mItems.get(i).getNominalTransaksi());
-                        simpanan.setIdUserNasabah(mItems.get(i).getIdUserNasabah());
-                        simpanan.setStatus(mItems.get(i).getStatus());
-                        simpanan.setIdUserKaryawan(mItems.get(i).getIdUserKaryawan());
-                        simpanan.setBuktiPembayaran(mItems.get(i).getBuktiPembayaran());
-                        db.simpananDAO().insertSimpanan(mItems);
+                    for(int i = 0; i < nItems.size(); i++){
+                        simpanan.setId(nItems.get(i).getId());
+                        simpanan.setTanggal(nItems.get(i).getTanggal());
+                        simpanan.setJenisTransaksi(nItems.get(i).getJenisTransaksi());
+                        simpanan.setNominalTransaksi(nItems.get(i).getNominalTransaksi());
+                        simpanan.setIdUserNasabah(nItems.get(i).getIdUserNasabah());
+                        simpanan.setStatus(nItems.get(i).getStatus());
+                        simpanan.setIdUserKaryawan(nItems.get(i).getIdUserKaryawan());
+                        simpanan.setBuktiPembayaran(nItems.get(i).getBuktiPembayaran());
+                        db.simpananDAO().insertTarikan(nItems);
                         Log.d("retro", "berhasil insert ke sqllite");
                     }
 

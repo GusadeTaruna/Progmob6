@@ -15,9 +15,12 @@ public interface SimpananDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertSimpanan(List<HistoriItem> simpananList);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertTarikan(List<com.example.koperasiku.nasabah.RiwayatPenarikan.HistoriItem> simpananList);
+
     @Query("SELECT * FROM tb_simpanan WHERE idUserNasabah = :id AND jenisTransaksi = 1 ORDER BY tanggal ASC")
     List<HistoriItem> selectAll(int id);
 
-    @Query("SELECT * FROM tb_simpanan WHERE idUserNasabah = :id AND jenisTransaksi = 2 ORDER BY tanggal ASC")
+    @Query("SELECT * FROM tb_penarikan WHERE idUserNasabah = :id AND jenisTransaksi = 2 ORDER BY tanggal ASC")
     List<com.example.koperasiku.nasabah.RiwayatPenarikan.HistoriItem> selectAllTarik(int id);
 }

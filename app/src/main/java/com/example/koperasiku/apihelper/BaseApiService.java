@@ -27,8 +27,8 @@ public interface BaseApiService {
     // Fungsi ini untuk memanggil API http://10.0.2.2/mahasiswa/login.php
     @FormUrlEncoded
     @POST("login")
-    Call<LoginResponse> loginRequest(String s, @Field("email") String email,
-                                     @Field("password") String password);
+    Call<LoginResponse> loginRequest(@Field("email") String email,
+                                     @Field("password") String password,  @Field("fcm_token") String token);
 
     // Fungsi ini untuk memanggil API http://10.0.2.2/mahasiswa/register.php
     @FormUrlEncoded

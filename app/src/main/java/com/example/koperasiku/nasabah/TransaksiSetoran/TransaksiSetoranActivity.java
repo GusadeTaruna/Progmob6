@@ -103,6 +103,9 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loading = ProgressDialog.show(TransaksiSetoranActivity.this, null, "Harap Tunggu...", true, false);
                 prosesTransaksi();
+
+
+
             }
         });
 

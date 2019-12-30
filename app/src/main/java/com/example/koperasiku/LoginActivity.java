@@ -5,7 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +23,10 @@ import com.example.koperasiku.RegisterActivity;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
         initComponents();
+        SharedPreferences profile = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        final Intent toMain = new Intent(LoginActivity.this, MainActivity.class);
+        if(profile.contains("id")){
+            startActivity(toMain);
+            finish();
+        }
 
     }
 
@@ -64,11 +76,47 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.w("TESTAA", "tesa");
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-//                requestLogin();
-                requestLogin();
+                boolean anyError = false;
+                if (etEmail.getText().toString().equals("")){
+                    etEmail.setError("Email tidak boleh kosong");
+                    anyError = true;
+                }
+
+                if (etPassword.getText().toString().equals("")){
+                    etPassword.setError("Password tidak boleh kosong");
+                    anyError = true;
+                }
+                Log.w("TESTAA", "tesa");
+
+
+                if(!anyError){
+                    Log.w("TESTAA", "tesa");
+                    loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                    FirebaseInstanceId.getInstance().getInstanceId()
+                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.w("TESTAA", "getInstanceId failed", task.getException());
+                                    return;
+                                }
+
+                                // Get new Instance ID token
+                                String token = task.getResult().getToken();
+
+                                // Log and toast
+                                String msg = token;
+                                Log.d("TESTAA", msg);
+                                requestLogin(token);
+                            }
+                        });
+                }
+
             }
         });
+
 
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +136,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    public void requestLogin(){
-        mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString())
+    public void requestLogin(String token){
+        mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString(), token)
                 .enqueue(new Callback<LoginResponse>() {
 
                     @Override

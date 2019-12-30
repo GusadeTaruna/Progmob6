@@ -1,6 +1,7 @@
 package com.example.koperasiku.apihelper;
 
 import com.example.koperasiku.karyawan.modelHitungBunga.HitungResponse;
+import com.example.koperasiku.karyawan.modelVerif.VerifResponse;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
@@ -43,7 +44,8 @@ public interface BaseApiService {
     @POST("detail")
     Call<DetailResponse> detailProfile();
 
-
+    @POST("not_verify")
+    Call<VerifResponse> getVerif();
 
     @POST("hitung_bunga/{pegawai} ")
     Call<HitungResponse> getHitung(@Path("pegawai") int id);

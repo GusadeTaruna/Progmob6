@@ -1,5 +1,6 @@
 package com.example.koperasiku.apihelper;
 
+import com.example.koperasiku.karyawan.modelHitungBunga.HitungResponse;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
@@ -43,6 +44,9 @@ public interface BaseApiService {
     Call<DetailResponse> detailProfile();
 
 
+
+    @POST("hitung_bunga/{pegawai} ")
+    Call<HitungResponse> getHitung(@Path("pegawai") int id);
 
     @GET("report/nasabah/setor/{id}")
     Call<SimpananResponse> getSimpanItem(@Path("id") int id);

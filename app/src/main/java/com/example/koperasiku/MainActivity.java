@@ -183,6 +183,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
     //Menampilkan halaman Fragment
     private boolean getFragmentPage(Fragment fragment){
         if (fragment != null){

@@ -24,6 +24,8 @@ import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -36,7 +38,7 @@ public class Profile extends Fragment {
     FrameLayout rootView;
     Button btnLogout;
     Button btnEdit;
-    TextView tvResultNama,lblnama,lblemail,lblrole,lbltelepon;
+    TextView tvResultNama,lblnama,lblemail,lblrole,lbltelepon, saldo;
     String resultNama;
     BaseApiService mApiService;
     ProgressDialog loading;
@@ -54,6 +56,7 @@ public class Profile extends Fragment {
         lblemail = (TextView) rootView.findViewById(R.id.email_text);
         lblrole = (TextView) rootView.findViewById(R.id.home_jabatan);
         lbltelepon = (TextView) rootView.findViewById(R.id.notelp);
+        saldo = (TextView) rootView.findViewById(R.id.saldo);
 
         btnLogout = (Button) rootView.findViewById(R.id.btnLogout);
         btnEdit = (Button) rootView.findViewById(R.id.btnEdit);

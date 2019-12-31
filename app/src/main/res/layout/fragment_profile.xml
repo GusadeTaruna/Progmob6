@@ -8,9 +8,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/frame_profile"
@@ -75,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginEnd="100dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +87,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="37dp"
+                        android:layout_width="42dp"
                         android:layout_height="46dp"
                         android:padding="4dp"
                         android:src="@drawable/email" />
@@ -189,16 +187,42 @@
                 android:layout_width="208dp"
                 android:layout_height="39dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="28dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/bg_auth_btn"
-                android:text="Edit Profile"
                 android:fontFamily="@font/nunito_sans_bold"
+                android:text="Edit Profile"
                 android:textColor="#ffffff"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintHorizontal_bias="0.508"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saldo" />
+
+            <TextView
+                android:id="@+id/capt"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Saldo Nasabah : "
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <TextView
+                android:id="@+id/saldo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:text="Saldo"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/capt" />
 
         </android.support.constraint.ConstraintLayout>
 

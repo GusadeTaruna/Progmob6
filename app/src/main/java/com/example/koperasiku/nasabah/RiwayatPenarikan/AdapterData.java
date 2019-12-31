@@ -41,7 +41,6 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData> {
         String nominalTransaksi = String.valueOf(dm.getNominalTransaksi());
         holder.nominal.setText(nominalTransaksi);
         holder.status.setText(dm.getStatus());
-        holder.verif.setVisibility(View.VISIBLE);
 
     }
 
@@ -52,7 +51,6 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData> {
 
     class HolderData extends RecyclerView.ViewHolder{
         TextView tanggal,nominal,status;
-        Button verif;
 
         public HolderData (View v){
             super(v);
@@ -60,7 +58,6 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData> {
             tanggal = (TextView) v.findViewById(R.id.tanggal);
             nominal = (TextView) v.findViewById(R.id.nominal);
             status = (TextView) v.findViewById(R.id.status);
-            verif = (Button) v.findViewById(R.id.btnVerif);
         }
     }
 }

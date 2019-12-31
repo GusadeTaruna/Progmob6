@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.koperasiku.model.karyawanAPIModel.User;
@@ -13,7 +14,7 @@ import com.example.koperasiku.model.karyawanAPIModel.User;
 public class SplashActivity extends AppCompatActivity {
     UserSessionManager session;
     private SharedPreferences profile;
-    private int waktu_loading=3000;
+    private int waktu_loading=1000;
 
     //4000=4 detik
 
@@ -29,14 +30,19 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent home = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(home);
-                finish();
+//                Intent home = new Intent(SplashActivity.this, LoginActivity.class);
+//                startActivity(home);
+//                finish();
 
                 profile = getSharedPreferences("AndroidExamplePref", Context.MODE_PRIVATE);
                 final String UserRole = profile.getString("role",null);
                 Log.d("debug","Role : "+UserRole);
-                if(UserRole.equals("Nasabah")){
+                if (TextUtils.isEmpty(UserRole)){
+                    Intent home = new Intent(SplashActivity.this, LoginActivity.class);
+                    startActivity(home);
+                    finish();
+                }
+                else if(UserRole.equals("Nasabah")){
                     Intent main =new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(main);
                     finish();

@@ -17,21 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".karyawan.HitungBungaActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".karyawan.HitungBungaActivity" />
         <activity android:name=".karyawan.ReportTransaksiActivity" />
         <activity android:name=".karyawan.KelolaNasabahActivity" />
         <activity android:name=".karyawan.verifikasiTransaksiActivity" />
         <activity android:name=".nasabah.RiwayatSimpanan.TampilDataActivity" />
         <activity android:name=".nasabah.RiwayatPenarikan.TampilDataTarik" />
-        <activity android:name=".MainActivity2">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name=".MainActivity2"/>
         <activity android:name=".nasabah.TransaksiSetoran.TransaksiSetoranActivity" />
         <activity android:name=".nasabah.TransaksiPenarikan.TransaksiPenarikanActivity" />
         <activity android:name=".TransaksiActivity" />
@@ -40,18 +33,20 @@
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service android:name=".FirebaseCloudMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />

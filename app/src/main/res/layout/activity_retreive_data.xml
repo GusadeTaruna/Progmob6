@@ -13,7 +13,7 @@
         android:layout_marginTop="44dp"
         android:fontFamily="@font/nunito_sans_bold"
         android:gravity="center"
-        android:text="Riwayat Transaksi Simpanan"
+        android:text="Riwayat Transaksi Nasabah"
         android:textSize="20dp"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"

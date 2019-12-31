@@ -1,6 +1,8 @@
 package com.example.koperasiku.apihelper;
 
 import com.example.koperasiku.karyawan.modelHitungBunga.HitungResponse;
+import com.example.koperasiku.karyawan.modelKelolaNasabah.HapusNasabahResponse;
+import com.example.koperasiku.karyawan.modelKelolaNasabah.NasabahResponse;
 import com.example.koperasiku.karyawan.modelVerif.AccResponse;
 import com.example.koperasiku.karyawan.modelVerif.VerifResponse;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
@@ -42,6 +44,12 @@ public interface BaseApiService {
 
     @POST("verify/{pegawai}/{id}")
     Call<AccResponse> accSimpanan(@Path("pegawai") int pegawai, @Path("id") int id);
+
+    @GET("nasabah")
+    Call<NasabahResponse> listNasabah();
+
+    @POST("hapusnasabah/{id}")
+    Call<HapusNasabahResponse> hapusNasabah(@Path("id") int id);
 
     @POST("detail")
     Call<DetailResponse> detailProfile();

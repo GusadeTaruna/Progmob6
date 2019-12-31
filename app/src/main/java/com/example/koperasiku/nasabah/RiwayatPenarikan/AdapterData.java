@@ -26,7 +26,7 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData> {
 
     @Override
     public HolderData onCreateViewHolder(ViewGroup parent, int viewType) {
-        View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_riwayat_simpanan,parent,false);
+        View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_riwayat_penarikan,parent,false);
         HolderData holder = new HolderData(layout);
         return holder;
     }
@@ -41,11 +41,7 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData> {
         String nominalTransaksi = String.valueOf(dm.getNominalTransaksi());
         holder.nominal.setText(nominalTransaksi);
         holder.status.setText(dm.getStatus());
-        if(dm.getStatus()=="Not Verified"){
-            holder.verif.setVisibility(View.VISIBLE);
-        }else{
-            holder.verif.setVisibility(View.GONE);
-        }
+        holder.verif.setVisibility(View.VISIBLE);
 
     }
 

@@ -77,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.w("TESTAA", "tesa");
-                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                 boolean anyError = false;
                 if (etEmail.getText().toString().equals("")){
                     etEmail.setError("Email tidak boleh kosong");

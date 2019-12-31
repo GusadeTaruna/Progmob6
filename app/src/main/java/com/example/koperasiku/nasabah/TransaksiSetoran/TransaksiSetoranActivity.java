@@ -109,7 +109,7 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
             }
         });
 
-        dateFormatter = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(new Date());
+        dateFormatter = new SimpleDateFormat("MMM dd, yyyy", Locale.US).format(new Date());
         dateBayar = (TextView) findViewById(R.id.tanggal);
         dateBayar.setText(dateFormatter);
 

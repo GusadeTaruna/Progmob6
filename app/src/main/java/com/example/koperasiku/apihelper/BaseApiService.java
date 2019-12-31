@@ -1,6 +1,7 @@
 package com.example.koperasiku.apihelper;
 
 import com.example.koperasiku.karyawan.modelHitungBunga.HitungResponse;
+import com.example.koperasiku.karyawan.modelVerif.AccResponse;
 import com.example.koperasiku.karyawan.modelVerif.VerifResponse;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
@@ -39,7 +40,8 @@ public interface BaseApiService {
                                            @Field("password") String password,
                                            @Field("c_password") String c_password);
 
-
+    @POST("verify/{pegawai}/{id}")
+    Call<AccResponse> accSimpanan(@Path("pegawai") int pegawai, @Path("id") int id);
 
     @POST("detail")
     Call<DetailResponse> detailProfile();

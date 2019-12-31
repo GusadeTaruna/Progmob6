@@ -29,17 +29,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
+                    android:fontFamily="@font/nunito_sans_bold"
                     android:text="Tanggal :"
-                    android:textColor="#000"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tanggal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_reguler"
                     android:text="Tanggal ini"
-                    android:textColor="#000"
+                    android:textColor="#161616"
                     android:textSize="18dp" />
 
             </LinearLayout>
@@ -53,17 +54,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
+                    android:fontFamily="@font/nunito_sans_bold"
                     android:text="Nominal :"
-                    android:textColor="#000"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/nominal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_reguler"
                     android:text="ini Nominal"
-                    android:textColor="#000"
+                    android:textColor="#161616"
                     android:textSize="18dp" />
 
             </LinearLayout>
@@ -77,33 +79,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
+                    android:fontFamily="@font/nunito_sans_bold"
                     android:text="Status :"
-                    android:textColor="#000"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_reguler"
                     android:text="ini Status"
-                    android:textColor="#000"
+                    android:textColor="#161616"
                     android:textSize="18dp" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
 
-                <Button
-                    android:id="@+id/btnVerif"
-                    android:text="Click to verified"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+<!--                <Button-->
+<!--                    android:id="@+id/btnVerif"-->
+<!--                    android:background="@drawable/bg_auth_btn"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:text="Click to verified"-->
+<!--                    android:textColor="#fcfcfc"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content" />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
 
         </LinearLayout>

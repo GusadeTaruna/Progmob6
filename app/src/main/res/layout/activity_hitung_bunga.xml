@@ -15,9 +15,9 @@
         android:text="HITUNG BUNGA"
         android:textColor="#fcfcfc"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/caption"
         app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/caption"
         app:layout_constraintTop_toBottomOf="@+id/tanggal"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -29,13 +29,13 @@
         android:fontFamily="@font/nunito_sans_reguler"
         android:text="Tanggal"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="@+id/caption"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toStartOf="@+id/caption"
+        app:layout_constraintTop_toBottomOf="@+id/caption" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"

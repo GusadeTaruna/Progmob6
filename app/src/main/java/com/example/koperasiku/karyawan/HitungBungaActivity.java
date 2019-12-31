@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class HitungBungaActivity extends AppCompatActivity {
     Button btnHitung;
-    TextView tanggal;
+    TextView tanggal,caption;
     ProgressDialog loading;
     String dateFormatter;
     private SharedPreferences profile;
@@ -38,6 +38,7 @@ public class HitungBungaActivity extends AppCompatActivity {
 
         btnHitung = (Button) findViewById(R.id.btnHitung);
         tanggal = (TextView) findViewById(R.id.tanggal);
+        caption = (TextView) findViewById(R.id.caption);
 
         dateFormatter = new SimpleDateFormat("MMM dd, yyyy", Locale.US).format(new Date());
         tanggal.setText(dateFormatter);

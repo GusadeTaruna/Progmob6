@@ -1,7 +1,11 @@
 package com.example.koperasiku.karyawan;
 
 import android.app.ProgressDialog;
+import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +20,7 @@ import com.example.koperasiku.karyawan.modelKelolaNasabah.NasabahItem;
 import com.example.koperasiku.karyawan.modelKelolaNasabah.NasabahResponse;
 import com.example.koperasiku.karyawan.modelReport.DataItem;
 import com.example.koperasiku.karyawan.modelReport.ReportResponse;
+import com.example.koperasiku.room.AppDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +38,7 @@ public class ReportTransaksiActivity extends AppCompatActivity {
     private List<DataItem> mItems = new ArrayList<>();
     BaseApiService mApiService = UtilsApi.getAPIService();
     ProgressDialog pd;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,30 +54,51 @@ public class ReportTransaksiActivity extends AppCompatActivity {
         pd.setCancelable(false);
         pd.show();
 //
-        mApiService.reportTransaksi().enqueue(new Callback<ReportResponse>() {
-            @Override
-            public void onResponse(Call<ReportResponse> call, Response<ReportResponse> response) {
-                if (response.isSuccessful()) {
-                    pd.dismiss();
-                    Log.d("retro", "RESPONSE : "+response.body().getData() );
-                    mItems = response.body().getData();
+        if (this.isNetworkAvailable()){
+            mApiService.reportTransaksi().enqueue(new Callback<ReportResponse>() {
+                @Override
+                public void onResponse(Call<ReportResponse> call, Response<ReportResponse> response) {
+                    if (response.isSuccessful()) {
+                        pd.dismiss();
+                        Log.d("retro", "RESPONSE : "+response.body().getData() );
+                        mItems = response.body().getData();
 
-                    mAdapter = new AdapterDataReport(ReportTransaksiActivity.this,mItems);
-                    mRecycler.setAdapter(mAdapter);
-                    mAdapter.notifyDataSetChanged();
+                        mAdapter = new AdapterDataReport(ReportTransaksiActivity.this,mItems);
+                        mRecycler.setAdapter(mAdapter);
+                        mAdapter.notifyDataSetChanged();
 
-                }else{
-                    Log.d("retro", "RESPONSE : "+response.body().getData() );
+                    }else{
+                        Log.d("retro", "RESPONSE : "+response.body().getData() );
+
+                    }
 
                 }
+                @Override
+                public void onFailure(Call<ReportResponse> call, Throwable t) {
+                    Log.d("debug","GAGAL");
+                    Toast.makeText(ReportTransaksiActivity.this, "GAGAL", Toast.LENGTH_SHORT).show();
+                    pd.dismiss();
+                }
+            });
+        }
+        else{
+            pd.dismiss();
+            Toast.makeText(ReportTransaksiActivity.this, "Menggunakan data local", Toast.LENGTH_SHORT).show();
+            loadFromLocal();
+        }
+    }
 
-            }
-            @Override
-            public void onFailure(Call<ReportResponse> call, Throwable t) {
-                Log.d("debug","GAGAL");
-                Toast.makeText(ReportTransaksiActivity.this, "GAGAL", Toast.LENGTH_SHORT).show();
-                pd.dismiss();
-            }
-        });
+    private boolean isNetworkAvailable(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void loadFromLocal(){
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "db_koperasi").allowMainThreadQueries().build();
+        mItems = db.simpananDAO().selectReports();
+        mAdapter = new AdapterDataReport(ReportTransaksiActivity.this,mItems);
+        mRecycler.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 }

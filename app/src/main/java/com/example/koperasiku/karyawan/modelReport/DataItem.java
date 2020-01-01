@@ -1,7 +1,11 @@
 package com.example.koperasiku.karyawan.modelReport;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "tb_report")
 public class DataItem{
 
 	@SerializedName("nominal_transaksi")
@@ -10,6 +14,7 @@ public class DataItem{
 	@SerializedName("id_user_karyawan")
 	private int idUserKaryawan;
 
+	@PrimaryKey
 	@SerializedName("id")
 	private int id;
 

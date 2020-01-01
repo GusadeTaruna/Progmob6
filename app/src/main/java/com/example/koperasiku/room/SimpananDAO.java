@@ -5,6 +5,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
+import com.example.koperasiku.karyawan.modelReport.DataItem;
 import com.example.koperasiku.nasabah.RiwayatSimpanan.HistoriItem;
 
 import java.util.List;
@@ -23,4 +24,10 @@ public interface SimpananDAO {
 
     @Query("SELECT * FROM tb_penarikan WHERE idUserNasabah = :id AND jenisTransaksi = 2 ORDER BY tanggal ASC")
     List<com.example.koperasiku.nasabah.RiwayatPenarikan.HistoriItem> selectAllTarik(int id);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertReports(List<DataItem> simpananList);
+
+    @Query("SELECT * FROM tb_report")
+    List<DataItem> selectReports();
 }

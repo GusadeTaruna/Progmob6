@@ -1,7 +1,11 @@
 package com.example.koperasiku.karyawan.modelKelolaNasabah;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "tb_nasabah")
 public class NasabahItem{
 
 	@SerializedName("user_role")
@@ -14,19 +18,20 @@ public class NasabahItem{
 	private String name;
 
 	@SerializedName("fcm_token")
-	private Object fcmToken;
+	private String fcmToken;
 
 	@SerializedName("created_at")
 	private String createdAt;
 
 	@SerializedName("email_verified_at")
-	private Object emailVerifiedAt;
+	private String emailVerifiedAt;
 
+	@PrimaryKey
 	@SerializedName("id")
 	private int id;
 
 	@SerializedName("no_telp")
-	private Object noTelp;
+	private String noTelp;
 
 	@SerializedName("email")
 	private String email;
@@ -55,11 +60,11 @@ public class NasabahItem{
 		return name;
 	}
 
-	public void setFcmToken(Object fcmToken){
+	public void setFcmToken(String fcmToken){
 		this.fcmToken = fcmToken;
 	}
 
-	public Object getFcmToken(){
+	public String getFcmToken(){
 		return fcmToken;
 	}
 
@@ -71,11 +76,11 @@ public class NasabahItem{
 		return createdAt;
 	}
 
-	public void setEmailVerifiedAt(Object emailVerifiedAt){
+	public void setEmailVerifiedAt(String emailVerifiedAt){
 		this.emailVerifiedAt = emailVerifiedAt;
 	}
 
-	public Object getEmailVerifiedAt(){
+	public String getEmailVerifiedAt(){
 		return emailVerifiedAt;
 	}
 
@@ -87,11 +92,11 @@ public class NasabahItem{
 		return id;
 	}
 
-	public void setNoTelp(Object noTelp){
+	public void setNoTelp(String noTelp){
 		this.noTelp = noTelp;
 	}
 
-	public Object getNoTelp(){
+	public String getNoTelp(){
 		return noTelp;
 	}
 

@@ -28,8 +28,6 @@
         <activity android:name=".nasabah.TransaksiSetoran.TransaksiSetoranActivity" />
         <activity android:name=".nasabah.TransaksiPenarikan.TransaksiPenarikanActivity" />
         <activity android:name=".TransaksiActivity" />
-        <activity android:name=".karyawan.DetailKaryawanActivity" />
-        <activity android:name=".karyawan.KaryawanActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />

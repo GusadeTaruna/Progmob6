@@ -24,7 +24,10 @@ import com.example.koperasiku.R;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.RetrofitClient;
 import com.example.koperasiku.apihelper.UtilsApi;
+import com.example.koperasiku.model.NotifPenarikanResponse;
+import com.example.koperasiku.model.NotifResponse;
 import com.example.koperasiku.model.nasabahAPIModel.TransaksiResponse;
+import com.example.koperasiku.nasabah.TransaksiSetoran.TransaksiSetoranActivity;
 
 import org.w3c.dom.Text;
 
@@ -49,7 +52,7 @@ public class TransaksiPenarikanActivity extends AppCompatActivity {
     Uri gambarUri;
     TextView textBukti;
     ProgressDialog loading;
-    BaseApiService mApiService;
+    BaseApiService mApiService = UtilsApi.getAPIService();
     EditText nominal;
     private ImageView ivUser;
     private String buktiUpload;
@@ -88,7 +91,7 @@ public class TransaksiPenarikanActivity extends AppCompatActivity {
         //REGISTER KE API
         profile = getSharedPreferences("AndroidExamplePref", Context.MODE_PRIVATE);
         String jenisTransaksi = "2";
-        Integer id = profile.getInt("id",0);
+        final Integer id = profile.getInt("id",0);
         RequestBody nasabahId = RequestBody.create(MediaType.parse("text/plain"), id+"");
         RequestBody nominalTransaksi = RequestBody.create(MediaType.parse("text/plain"), nominal.getText().toString());
         RequestBody jenis_transaksi = RequestBody.create(MediaType.parse("text/plain"), jenisTransaksi.toString());
@@ -100,9 +103,19 @@ public class TransaksiPenarikanActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<TransaksiResponse> call, Response<TransaksiResponse> response) {
                         if (response.isSuccessful()) {
-                            loading.dismiss();
-                            Toast.makeText(TransaksiPenarikanActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                            finish();
+                            mApiService.notifTarik(id).enqueue(new Callback<NotifPenarikanResponse>() {
+                                @Override
+                                public void onResponse(Call<NotifPenarikanResponse> call, Response<NotifPenarikanResponse> response) {
+                                    Log.d("debug", "NOTIF TARIK BERHASIL" );
+                                    loading.dismiss();
+                                    Toast.makeText(TransaksiPenarikanActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                                @Override
+                                public void onFailure(Call<NotifPenarikanResponse> call, Throwable t) {
+                                    Log.d("debug","GAGAL");
+                                }
+                            });
                         }else{
                             loading.dismiss();
                             Toast.makeText(TransaksiPenarikanActivity.this, "Gagal", Toast.LENGTH_SHORT).show();

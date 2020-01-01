@@ -74,7 +74,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Halaman untuk melakukan transaksi setoran"
+                            android:text="Halaman untuk melakukan Verifikasi transaksi"
                             android:textSize="10dp"
                             android:fontFamily="@font/nunito_sans_reguler"/>
 
@@ -115,7 +115,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Halaman untuk melakukan transaksi penarikan"
+                            android:text="Halaman untuk Kelola nasabah"
                             android:textSize="10dp"
                             android:fontFamily="@font/nunito_sans_reguler"/>
 
@@ -162,7 +162,7 @@
                             android:gravity="center"
                             android:textSize="12sp"
                             android:fontFamily="@font/nunito_sans_bold"
-                            android:text="Repoet Transaksi"
+                            android:text="Report Transaksi"
                             android:textColor="#00D1A5"
                             android:textStyle="bold" />
 
@@ -171,7 +171,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Halaman untuk melihat riwayat transaksi setoran"
+                            android:text="Halaman untuk melihat report transaksi nasabah"
                             android:textSize="10dp"
                             android:fontFamily="@font/nunito_sans_reguler"/>
 
@@ -214,7 +214,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Halaman untuk melihat riwayat transaksi penarikan"
+                            android:text="Halaman untuk melakukan perhitungan bunga"
                             android:textSize="10dp"
                             android:fontFamily="@font/nunito_sans_reguler"/>
 

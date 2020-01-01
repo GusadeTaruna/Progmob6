@@ -60,9 +60,11 @@ public class AdapterDataVerif extends RecyclerView.Adapter<AdapterDataVerif.Hold
         holder.status.setText(dm.getStatus());
         if(dm.getJenisTransaksi()==1){
             holder.jenis.setText("Simpanan");
+            holder.bukti.setVisibility(View.VISIBLE);
         }
         if(dm.getJenisTransaksi()==2){
             holder.jenis.setText("Penarikan");
+            holder.bukti.setVisibility(View.GONE);
         }
         Log.e("debug","STATUS : "+dm.getStatus());
         holder.verif.setVisibility(View.VISIBLE);

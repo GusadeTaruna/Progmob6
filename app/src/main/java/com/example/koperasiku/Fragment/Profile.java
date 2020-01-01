@@ -24,8 +24,6 @@ import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -38,7 +36,7 @@ public class Profile extends Fragment {
     FrameLayout rootView;
     Button btnLogout;
     Button btnEdit;
-    TextView tvResultNama,lblnama,lblemail,lblrole,lbltelepon, saldo;
+    TextView tvResultNama,lblnama,lblemail,lblrole,lbltelepon, lblsaldo;
     String resultNama;
     BaseApiService mApiService;
     ProgressDialog loading;
@@ -56,7 +54,7 @@ public class Profile extends Fragment {
         lblemail = (TextView) rootView.findViewById(R.id.email_text);
         lblrole = (TextView) rootView.findViewById(R.id.home_jabatan);
         lbltelepon = (TextView) rootView.findViewById(R.id.notelp);
-        saldo = (TextView) rootView.findViewById(R.id.saldo);
+        lblsaldo = (TextView) rootView.findViewById(R.id.tvSaldo);
 
         btnLogout = (Button) rootView.findViewById(R.id.btnLogout);
         btnEdit = (Button) rootView.findViewById(R.id.btnEdit);
@@ -142,11 +140,14 @@ public class Profile extends Fragment {
                     String email = response.body().getEmail();
                     String jabatan = response.body().getUserRole();
                     String telp = response.body().getNoTelp();
+                    String saldo = String.valueOf(response.body().getSaldo());
 
                     lblnama.setText(nama);
                     lblemail.setText(email);
                     lblrole.setText(jabatan);
                     lbltelepon.setText(telp);
+                    lblsaldo.setText(saldo);
+
 
 //                Glide.with(getActivity())
 //                        .load(UtilsApi.BASE_URL_API + "/profileimages/" + image)
@@ -170,11 +171,14 @@ public class Profile extends Fragment {
                 final String email = user.get(UserSessionManager.KEY_EMAIL);
                 final String user_role = user.get(UserSessionManager.KEY_ROLE);
                 final String no_telp = user.get(UserSessionManager.KEY_PHONE);
+                final String saldoNasabah = user.get(UserSessionManager.KEY_SALDO);
+                Log.d("debug","Saldo di profile :"+saldoNasabah);
 
                 lblnama.setText(nama);
                 lblemail.setText(email);
                 lblrole.setText(user_role);
                 lbltelepon.setText(no_telp);
+                lblsaldo.setText(saldoNasabah);
 
             }
         });

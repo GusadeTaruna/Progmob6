@@ -6,35 +6,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.koperasiku.Fragment.Home;
-import com.example.koperasiku.Fragment.Profile;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.HashMap;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

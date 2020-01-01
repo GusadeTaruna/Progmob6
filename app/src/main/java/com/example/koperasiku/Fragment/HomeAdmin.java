@@ -42,7 +42,7 @@ public class HomeAdmin extends Fragment {
 //        nasabah = (CardView) rootView.findViewById(R.id.menu_nasabah);
         verifTransaksi = (CardView) rootView.findViewById(R.id.verifTransaksi);
         kelolaNasabah = (CardView) rootView.findViewById(R.id.kelolaNasabah);
-        report = (CardView) rootView.findViewById(R.id.hitungBunga);
+        report = (CardView) rootView.findViewById(R.id.reportTransaksi);
         hitungBunga = (CardView) rootView.findViewById(R.id.hitungBunga);
 
 //        karyawan.setOnClickListener(new View.OnClickListener() {

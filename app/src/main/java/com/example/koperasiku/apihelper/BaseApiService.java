@@ -3,8 +3,11 @@ package com.example.koperasiku.apihelper;
 import com.example.koperasiku.karyawan.modelHitungBunga.HitungResponse;
 import com.example.koperasiku.karyawan.modelKelolaNasabah.HapusNasabahResponse;
 import com.example.koperasiku.karyawan.modelKelolaNasabah.NasabahResponse;
+import com.example.koperasiku.karyawan.modelReport.ReportResponse;
 import com.example.koperasiku.karyawan.modelVerif.AccResponse;
 import com.example.koperasiku.karyawan.modelVerif.VerifResponse;
+import com.example.koperasiku.model.NotifPenarikanResponse;
+import com.example.koperasiku.model.NotifResponse;
 import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
 import com.example.koperasiku.model.karyawanAPIModel.EditResponse;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
@@ -31,7 +34,7 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("login")
     Call<LoginResponse> loginRequest(@Field("email") String email,
-                                     @Field("password") String password,  @Field("fcm_token") String token);
+                                     @Field("password") String password, @Field("fcm_token") String token);
 
     // Fungsi ini untuk memanggil API http://10.0.2.2/mahasiswa/register.php
     @FormUrlEncoded
@@ -48,6 +51,12 @@ public interface BaseApiService {
     @GET("nasabah")
     Call<NasabahResponse> listNasabah();
 
+    @GET("notif/setoran/{id}")
+    Call<NotifResponse> notifikasi(@Path("id") int id);
+
+    @GET("notif/tarik/{id}")
+    Call<NotifPenarikanResponse> notifTarik(@Path("id") int id);
+
     @POST("hapusnasabah/{id}")
     Call<HapusNasabahResponse> hapusNasabah(@Path("id") int id);
 
@@ -59,6 +68,9 @@ public interface BaseApiService {
 
     @POST("hitung_bunga/{pegawai} ")
     Call<HitungResponse> getHitung(@Path("pegawai") int id);
+
+    @GET("report")
+    Call<ReportResponse> reportTransaksi();
 
     @GET("report/nasabah/setor/{id}")
     Call<SimpananResponse> getSimpanItem(@Path("id") int id);

@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.koperasiku.model.karyawanAPIModel.User;
-
 public class SplashActivity extends AppCompatActivity {
     UserSessionManager session;
     private SharedPreferences profile;

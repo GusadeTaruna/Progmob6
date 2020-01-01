@@ -16,10 +16,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.koperasiku.Fragment.Profile;
-import com.example.koperasiku.MainActivity;
-import com.example.koperasiku.R;
-import com.example.koperasiku.RegisterActivity;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.UtilsApi;
 import com.example.koperasiku.model.karyawanAPIModel.LoginResponse;
@@ -28,12 +24,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -127,9 +117,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 
 
@@ -148,7 +140,9 @@ public class LoginActivity extends AppCompatActivity {
                             final String email = response.body().getUser().getEmail();
                             final String user_role = response.body().getUser().getUserRole();
                             final String telp = response.body().getUser().getNoTelp();
-                            session.createUserLoginSession(id,token,nama,email,user_role,telp);
+                            final String saldoNasabah = String.valueOf(response.body().getUser().getSaldo());
+                            Log.d("debug","Saldo : "+saldoNasabah);
+                            session.createUserLoginSession(id,token,nama,email,user_role,telp,saldoNasabah);
                             session.editor.putInt("id",id);
                             session.editor.putString("access_token",token);
                             session.editor.putString("role",user_role);

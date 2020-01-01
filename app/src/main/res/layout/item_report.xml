@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="9dp"
+        app:cardBackgroundColor="#fcfcfc"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="Tanggal :"
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_reguler"
+                    android:text="Tanggal ini"
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="Nominal :"
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/nominal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_reguler"
+                    android:text="ini Nominal"
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="Jenis Transaksi :"
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/jenis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_reguler"
+                    android:text="ini Jenis"
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:text="Status :"
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_reguler"
+                    android:text="ini Status"
+                    android:textColor="#161616"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/bukti"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="7dp"
+                    android:src="@drawable/loading"
+                    android:layout_marginBottom="7dp"
+                    android:layout_height="250dp" />
+
+            </LinearLayout>
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/btnVerif"-->
+            <!--                    android:background="@drawable/bg_auth_btn"-->
+            <!--                    android:text="Click to verified"-->
+            <!--                    android:layout_marginBottom="15dp"-->
+            <!--                    android:textColor="#fcfcfc"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content" />-->
+
+            <!--            </LinearLayout>-->
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

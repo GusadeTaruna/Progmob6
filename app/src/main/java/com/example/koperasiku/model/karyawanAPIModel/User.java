@@ -13,6 +13,9 @@ public class User{
 	@SerializedName("name")
 	private String name;
 
+	@SerializedName("fcm_token")
+	private Object fcmToken;
+
 	@SerializedName("created_at")
 	private String createdAt;
 
@@ -24,6 +27,9 @@ public class User{
 
 	@SerializedName("no_telp")
 	private String noTelp;
+
+	@SerializedName("saldo")
+	private int saldo;
 
 	@SerializedName("email")
 	private String email;
@@ -53,6 +59,14 @@ public class User{
 
 	public String getName(){
 		return name;
+	}
+
+	public void setFcmToken(Object fcmToken){
+		this.fcmToken = fcmToken;
+	}
+
+	public Object getFcmToken(){
+		return fcmToken;
 	}
 
 	public void setCreatedAt(String createdAt){
@@ -87,6 +101,14 @@ public class User{
 		return noTelp;
 	}
 
+	public void setSaldo(int saldo){
+		this.saldo = saldo;
+	}
+
+	public int getSaldo(){
+		return saldo;
+	}
+
 	public void setEmail(String email){
 		this.email = email;
 	}
@@ -110,10 +132,12 @@ public class User{
 			"user_role = '" + userRole + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 
 			",name = '" + name + '\'' + 
+			",fcm_token = '" + fcmToken + '\'' + 
 			",created_at = '" + createdAt + '\'' + 
 			",email_verified_at = '" + emailVerifiedAt + '\'' + 
 			",id = '" + id + '\'' + 
 			",no_telp = '" + noTelp + '\'' + 
+			",saldo = '" + saldo + '\'' + 
 			",email = '" + email + '\'' + 
 			",token = '" + token + '\'' + 
 			"}";

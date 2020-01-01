@@ -11,47 +11,35 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.koperasiku.R;
-import com.example.koperasiku.UserSessionManager;
 import com.example.koperasiku.apihelper.BaseApiService;
 import com.example.koperasiku.apihelper.RetrofitClient;
 import com.example.koperasiku.apihelper.UtilsApi;
-import com.example.koperasiku.model.karyawanAPIModel.DetailResponse;
+import com.example.koperasiku.model.NotifResponse;
 import com.example.koperasiku.model.nasabahAPIModel.Data;
 import com.example.koperasiku.model.nasabahAPIModel.TransaksiResponse;
 
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -67,7 +55,7 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
     Data nasabahModel;
     TextView textBukti;
     ProgressDialog loading;
-    BaseApiService mApiService;
+    BaseApiService mApiService = UtilsApi.getAPIService();
     EditText nominal;
     private ImageView ivUser;
     private String buktiUpload;
@@ -162,9 +150,19 @@ public class TransaksiSetoranActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<TransaksiResponse> call, Response<TransaksiResponse> response) {
                         if (response.isSuccessful()) {
-                            loading.dismiss();
-                            Toast.makeText(TransaksiSetoranActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                            finish();
+                            mApiService.notifikasi(id).enqueue(new Callback<NotifResponse>() {
+                                @Override
+                                public void onResponse(Call<NotifResponse> call, Response<NotifResponse> response) {
+                                    Log.d("debug", "NOTIF BERHASIL" );
+                                    loading.dismiss();
+                                    Toast.makeText(TransaksiSetoranActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                                @Override
+                                public void onFailure(Call<NotifResponse> call, Throwable t) {
+                                    Log.d("debug","GAGAL");
+                                }
+                            });
                         }else{
                             loading.dismiss();
                             Toast.makeText(TransaksiSetoranActivity.this, "Gagal", Toast.LENGTH_SHORT).show();

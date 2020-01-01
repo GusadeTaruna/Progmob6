@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "611353968936-gtub5418v2cp3iqca2ld40bp3i27rf1t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.koperasiku",
+            "certificate_hash": "6488582f7ec48c8ba68474d2d0256c191989e59f"
+          }
+        },
+        {
           "client_id": "611353968936-mfgg2bpd3b95s3n2o8mrgql9f98g5bnc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
